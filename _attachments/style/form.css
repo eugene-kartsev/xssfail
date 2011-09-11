@@ -1,0 +1,14 @@
+body { font-family:Verdana,Geneva,Arial,Helvetica,Sans-Serif; font-size:10pt; }
+
+table {border-collapse:collapse;border-spacing:0;}
+table tr td, table tr th { background-color:#EAF1EE; color:#002469; vertical-align:top; }
+table tr.head th {background-color:#fff;font-size:14pt;text-align:left;}
+table tr.head td {background-color:#fff;}
+table tr.title td {color:#fff;background-color:#002469; font-size:12pt;font-weight:bold;}
+ul {list-style-type:none; padding:0; margin:0;position:relative;}
+ul li { margin-bottom:5pt; }
+li img { vertical-align:middle; }
+li.lock img { position:absolute;top:-20px;left:70px; }
+.poweredby a:visited, .poweredby a { color: #2E83FF; text-decoration:underline;}
+p { font-size:7pt; }
+
