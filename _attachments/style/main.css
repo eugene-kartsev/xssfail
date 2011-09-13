@@ -43,6 +43,9 @@ ul li.injectscript ul li.other { text-align:center; height:0.8em; }
 ul li.injectscript ul li input { width:100%; }
 ul li.injectscript ul li.save { text-align:right; margin-top:1.2em; }
 
+ul li.injectscript ul li.save img,
+ul li.injectscript ul li.save span { vertical-align:middle; }
+
 .clear { clear:both; height:1px;}
 
 input { width:20em;font-size:.75em }
