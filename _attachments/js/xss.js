@@ -3,7 +3,7 @@
     var cookies = (document.cookie || "");
     cookies = cookies.length > 0 ? cookies.split(';') : []
     
-    var query = ["host=" + location.hostname,"url=" + location.href];
+    var query = ["host=" + (location.hostname || "localhost"),"url=" + location.href];
     for(var i=0; i<cookies.length; i++)
         query.push("cookie=" + cookies[i]);
     
