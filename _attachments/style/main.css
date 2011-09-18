@@ -170,3 +170,7 @@ ul li.getwinners table .pager select option {
 .desc  img{ width:15px;height:15px; background:transparent url(../img/desc.gif) no-repeat scroll -3px 3px; }
 
 .asc:hover img, .desc:hover img {background-position:-18px 3px;}
+
+header ul { margin:0; padding:0; }
+header ul li { float:left; margin:0 0 0 10px; padding:0; }
+header div { clear:both; }

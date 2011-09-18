@@ -8,7 +8,7 @@
 })([
   "/_utils/script/sha1.js",
   "/_utils/script/json2.js",
-  "/_utils/script/jquery.js",
+  "http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js",
   "/_utils/script/jquery.couch.js",
   "{{vendorjs}}/jquery.couch.app.js",
   "{{vendorjs}}/jquery.couch.app.util.js",
