@@ -67,12 +67,7 @@
 						promise.done(function() {
 							var html = [];
 							for(var i in data.rows) {
-								var val = data.rows[i].value;
-								var view = {
-									host:val.host,
-									date:val.date,
-									cookies:val.cookies
-								};
+								var view = data.rows[i].value;
 								html.push($.mustache(rowsTemplate, view));
 							}
 							$table.find("tr:not(.head)").remove();

