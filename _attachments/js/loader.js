@@ -2,8 +2,9 @@
 (function couchapp_load(scripts, config) {
     config = config || {};
     var vendorjs = config.vendorjs || "";
+    var staticjs = config.staticjs || "";
     for (var i=0; i < scripts.length; i++) {
-        document.write('<script src="'+scripts[i].replace('{{vendorjs}}', vendorjs)+'"><\/script>')
+        document.write('<script src="'+scripts[i].replace('{{vendorjs}}', vendorjs).replace('{{staticjs}}', staticjs)+'"><\/script>')
     };
 })([
   "/_utils/script/sha1.js",
@@ -13,6 +14,6 @@
   "{{vendorjs}}/jquery.couch.app.js",
   "{{vendorjs}}/jquery.couch.app.util.js",
   "{{vendorjs}}/jquery.mustache.js",
-  "{{vendorjs}}/jquery.evently.js"
+  "{{staticjs}}/index.js",
 ], config);
 

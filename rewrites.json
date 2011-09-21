@@ -1,0 +1,14 @@
+[
+  {
+    "from" : "index.html",
+    "to" : "_show/index.html"
+  },
+  {
+    "from" : "about.html",
+    "to" : "_show/about.html"
+  },
+  {
+    "from" : "/xss/_design/api/_rewrite/templates/*",
+    "to" : "/xss/_design/api/templates/*"
+  }
+]
