@@ -2,8 +2,8 @@
 
 If you know about [xss(Cross-site scripting)](http://en.wikipedia.org/wiki/Cross-site_scripting) vulnerability, and want to check whether you web app is secure enough, this project is for YOU!
 There are 2 options:
-1. Install standalone app to avoid losing sensitive data.
-2. Use online app - [xssFail.com](http://xssfail.com)
+* Install standalone app to avoid losing sensitive data.
+* Use online app - [xssFail.com](http://xssfail.com)
 
 ## How does it work?
 
