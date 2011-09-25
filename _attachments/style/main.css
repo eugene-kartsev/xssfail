@@ -131,11 +131,12 @@ ul li.getwinners table.rows td {
 ul li.getwinners table.rows tr:hover td {
 	background-color:#f4f4f4;
 }
-ul li.getwinners table th.pager {
+ul li.getwinners table th .pager {
 	text-align:right;
 	font-size:12px;
 }
-ul li.getwinners table .pager .next, ul li.getwinners table .pager .prev {
+ul li.getwinners table .pager .next,
+ul li.getwinners table .pager .prev {
 	display:inline;
 	width:15px;height:15px;
 	text-align:right;
@@ -143,10 +144,12 @@ ul li.getwinners table .pager .next, ul li.getwinners table .pager .prev {
 	padding:0;margin:0;border:0;
 	cursor:pointer;
 }
-ul li.getwinners table .pager .next {background:transparent url(../img/next.gif) no-repeat scroll left 1px;}
-ul li.getwinners table .pager .prev {background:transparent url(../img/prev.gif) no-repeat scroll right 1px;}
-ul li.getwinners table .pager .next:hover{background-position:left -14px;}
-ul li.getwinners table .pager .prev:hover{background-position:right -14px;}
+ul li.getwinners table .pager .prev
+{background:transparent url(../img/prev.gif) no-repeat scroll left 1px;}
+ul li.getwinners table .pager .next
+{background:transparent url(../img/next.gif) no-repeat scroll right 1px;}
+ul li.getwinners table .pager .prev:hover{background-position:left -14px;}
+ul li.getwinners table .pager .next:hover{background-position:right -14px;}
 
 ul li.getwinners table .pager form {
 	display:inline;

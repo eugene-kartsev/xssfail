@@ -4,11 +4,9 @@ function(doc, req) {
     
     var root = config.root;
     var data = {
-        css : root + "/style",
-        img : root + "/img",
-        formloader_js : root + "/js/formloader.js",
+        vendorjs : root + "/js/vendor/couchapp",
         form_js : root + "/js/form.js"
     };
     
-    return mustache.to_html(this.templates.form, data, this.templates.partials);
+    return mustache.to_html(this.templates.formloader, data);
 }

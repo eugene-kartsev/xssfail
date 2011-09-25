@@ -1,28 +1,27 @@
 (function($) {
-    if(!$ || !$.couch) return;
+    if(!$) return;
 
     $(function() {
-        var $db = $.couch.db("xss");
+	    var $db = $.couch.db(config.db);
 	    var $table = $("#rows");
+	    var $limit = $("#limit");
 	    var $page = $("#page-num");
-	    var $pager = $("#pager");
-	    var $next = $pager.find(".next");
-	    var $prev = $pager.find(".prev");
+	    var $next = $(".pager .next");
+	    var $prev = $(".pager .prev");
 	    var $byDate = $("#bydate");
 	    var $byHost = $("#byhost");
 	    var dbView = "api/items";
         var dbViewByDate = "api/items-by-date";
         var dbViewByHost = "api/items-by-host";
-        var desc = true;
 
 	    var rowsTemplate = null;
 	    var promise = $.get(config.templates + '/row.html', function(t) { rowsTemplate = t; });
 	
-	    var loadPage = function(skip, limit) {
+	    var loadPage = function(skip, limit, descending) {
 		    var opt = {
 			    skip:skip,
 			    limit:limit,
-			    descending:desc,
+			    descending:descending||false,
 			    success:function(data){
 				    promise.done(function() {
 					    var html = [];
@@ -39,46 +38,46 @@
 		    $db.view(dbView, opt);
 	    };
 	
-	    var totalPages = function() {
-	        return parseInt($pager.attr("totalpages"));
-	    };
-	    
 	    var pageSize = function() {
-		    return $pager.attr("pagesize");
+		    return $limit.val();
 	    };
 	
 	    var currentPage = function() {
-		    return (totalPages() - parseInt($page.val())) || 0;
+		    return (parseInt($page.val()) - 1) || 0;
 	    };
-
+	
 	    var currentPageUI = function() {
-		    return totalPages() - currentPage();
+		    return currentPage() + 1;
 	    };
 	
 	    var skip = function(pageNum) {
-		    return (pageNum) * pageSize();
+		    return pageNum * pageSize();
 	    };
 	
 	    var sort = function(dbview, $el) {
 		    dbView = dbview;
-		    desc = $el.hasClass("desc");
+		    var desc = $el.hasClass("desc");
 		    $el.removeClass().addClass(desc ? "asc" : "desc");
-		    loadPage(skip(currentPage()), pageSize());
+		    loadPage(skip(currentPage()), pageSize(), desc);
 	    };
 	
+	    $limit.change(function() {
+		    loadPage(skip(currentPage()), pageSize());
+	    });
+	
 	    $next.click(function() {
-		    var newPage = currentPage() - 1;
-		    if(newPage > -1) {
+		    var page = currentPage();
+		    if(page > -1) {
 			    $page.val(currentPageUI() + 1);
-			    loadPage(skip(newPage), pageSize());
+			    loadPage(skip(++page), pageSize());
 		    }
 	    });
 	
 	    $prev.click(function() {
-		    var newPage = currentPage() + 1;
-		    if(newPage < totalPages()) {
+		    var page = currentPage();
+		    if(page > 0) {
 			    $page.val(currentPageUI() - 1);
-			    loadPage(skip(newPage), pageSize());
+			    loadPage(skip(--page), pageSize());
 		    }
 	    });
 	
@@ -89,7 +88,8 @@
 	    $byHost.click(function() {
 		    sort(dbViewByHost, $byHost);
 	    });
-	    
-	    $pager.find("a").click(function() { return false; });
+	
+	    $limit.change();
     });
 })(jQuery);
+

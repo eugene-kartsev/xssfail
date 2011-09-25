@@ -1,14 +1,63 @@
 [
-  {
-    "from" : "index.html",
-    "to" : "_show/index.html"
-  },
-  {
-    "from" : "about.html",
-    "to" : "_show/about.html"
-  },
-  {
-    "from" : "/xss/_design/api/_rewrite/templates/*",
-    "to" : "/xss/_design/api/templates/*"
-  }
+    {
+        "from" : "index.html",
+        "to" : "_list/index.html/items-by-date",
+        "query" : {
+            "descending" : "true",
+            "limit" : "5"
+        }
+    },
+    {
+        "from" : "form.html",
+        "to" : "_show/form.html"
+    },
+    {
+        "from" : "about.html",
+        "to" : "_show/about.html"
+    },
+    {
+        "from" : "js/form.js",
+        "to" : "_show/form.js"
+    },
+    {
+        "from" : "xss.js",
+        "to" : "_show/xss.js"
+    },
+    {
+        "from" : "js/loader.js",
+        "to" : "_show/loader.js"
+    },
+    {
+        "from" : "js/formloader.js",
+        "to" : "_show/formloader.js"
+    },
+    {
+        "from" : "js/vendor/couchapp/*",
+        "to" : "vendor/couchapp/*"
+    },
+    {
+        "from" : "index.html/:desc/:skip/:limit",
+        "to" : "_list/index.html/items-by-date",
+        "query" : { 
+            "descending" : ":desc", 
+            "skip" : ":skip", 
+            "limit" : ":limit"
+        }
+    },
+    {
+        "from" : "style/*",
+        "to" : "style/*"
+    },
+    {
+        "from" : "img/*",
+        "to" : "img/*"
+    },
+    {
+        "from" : "js/*",
+        "to" : "js/*"
+    },
+    {
+        "from" : "templates/*",
+        "to" : "templates/*"
+    }
 ]

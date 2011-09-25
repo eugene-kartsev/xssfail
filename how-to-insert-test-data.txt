@@ -1,0 +1,1 @@
+curl -v -H "Content-Type: application/json" -X POST -d @testdata.json http://localhost:5984/xss/_bulk_docs

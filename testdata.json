@@ -1,0 +1,70 @@
+{
+    "docs" : [
+        {
+            "host" : "google.com",
+            "date" : "2011-10-01",
+            "url" : "http://google.com",
+            "cookies" : [{"test1":"test", "test2":"test2"}]
+        },
+        {
+            "host" : "microsoft.com",
+            "date" : "2011-10-02",
+            "url" : "http://microsoft.com",
+            "cookies" : [{"test1":"test", "test2":"test2"}]
+        },
+        {
+            "host" : "bing.com",
+            "date" : "2011-10-03",
+            "url" : "http://bing.com",
+            "cookies" : [{"test1":"test", "test2":"test2"}]
+        },
+        {
+            "host" : "bash.org.ru",
+            "date" : "2011-10-04",
+            "url" : "http://bash.org.ru",
+            "cookies" : [{"test1":"test", "test2":"test2"}]
+        },
+        {
+            "host" : "wikipedia.com",
+            "date" : "2011-10-05",
+            "url" : "http://wikipedia.com",
+            "cookies" : [{"test1":"test", "test2":"test2"}]
+        },
+        {
+            "host" : "some-other-host.com",
+            "date" : "2011-10-06",
+            "url" : "http://some-other-host.com",
+            "cookies" : [{"test1":"test", "test2":"test2"}]
+        },
+        {
+            "host" : "xssfail.com",
+            "date" : "2011-10-07",
+            "url" : "http://xssfail.com/index",
+            "cookies" : [{"test1":"test2", "test4":"test2"}]
+        },
+        {
+            "host" : "yandex.ru",
+            "date" : "2011-10-08",
+            "url" : "http://yandex.ru/index",
+            "cookies" : [{"test1":"test2", "test4":"test2"}]
+        },
+        {
+            "host" : "youtube.com",
+            "date" : "2011-10-09",
+            "url" : "http://youtube.com",
+            "cookies" : [{"test1":"test2", "test4":"test2"}]
+        },
+        {
+            "host" : "go-go-go.com",
+            "date" : "2011-10-10",
+            "url" : "http://go-go-go.com",
+            "cookies" : [{"test1":"test2", "test4":"test2"}]
+        },
+        {
+            "host" : "last.com",
+            "date" : "2011-10-11",
+            "url" : "http://last.com",
+            "cookies" : [{"test1":"test2", "test4":"test2"}]
+        }
+    ]
+}
