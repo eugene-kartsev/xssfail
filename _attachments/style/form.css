@@ -6,7 +6,7 @@ li img { vertical-align:middle; }
 
 .lock { float:left; width:30%; }
 h1 { float:left; width:65%; font-size:14pt; color:#002469; }
-.info { float:left; width:65%; color:#002469; font-size:8pt; }
+.info { float:left; width:65%; color:#002469; font-size:9pt; }
 .info table { margin:10px 0; border-collapse: collapse; border-spacing: 0; }
 .info table th, .info table td { color:#002469; background-color:transparent; padding:2px 40px 2px 0px; text-align:left; }
 
@@ -35,7 +35,7 @@ div.title:before
     vertical-align:baseline;
 }
 div.title:hover:before { color:yellow;border-color:yellow; }
-p { font-size:7.5pt; }
+p { font-size:9pt; }
 .payment-method li { float:left; margin-right:15px; }
 .hidden { display:none; }
 

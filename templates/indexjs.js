@@ -2,7 +2,7 @@
     if(!$ || !$.couch) return;
 
     $(function() {
-        var $db = $.couch.db("xss");
+        var $db = $.couch.db("{{db}}");
         var $table = $("#rows");
         var $page = $("#page-num");
         var $pager = $("#pager");

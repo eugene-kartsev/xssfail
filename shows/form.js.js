@@ -4,6 +4,7 @@ function(doc, req) {
     
     var root = config.root;
     var data = {
+        db : config.db,
         js : root + "/js",
         vendorjs : root + "/vendor/couchapp"
     };
