@@ -5,7 +5,8 @@ function(doc, req) {
     var root = config.root;
     var data = {
         js : root + "/js",
-        vendorjs : root + "/vendor/couchapp"
+        vendorjs : root + "/vendor/couchapp",
+        templates : root + "/templates",
     };
     
     return mustache.to_html(this.templates.indexjs, data);

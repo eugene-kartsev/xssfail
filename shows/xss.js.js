@@ -5,7 +5,7 @@ function(doc, req) {
     
     var root = config.root;
     var data = {
-        form_html : root + "/_rewrite/form.html"
+        form_html : root + "/form.html"
     };
     
     return mustache.to_html(this.templates.xss, data);

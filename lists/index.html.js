@@ -6,7 +6,7 @@ function(head, req) {
     provides("html", function() {
         var winners = [];
         var query = req.query;
-        var pageSize = parseInt(query.limit) || 5;
+        var pageSize = config.pageSize;
         var skip = parseInt(query.skip) || 0;
         var totalRows = parseInt(head.total_rows);
         var desc = !query.descending ? false : true;
@@ -29,10 +29,10 @@ function(head, req) {
             xss_js : root + "/xss.js",
             loader_js : root + "/js/loader.js",
             vendorjs : root + "/js/vendor/couchapp",
-            tpl : root + "/templates",
             has_winners : winners.length > 0,
             nextUrl : root + "/index.html/" + desc + "/" + nextPageSkip + "/" + pageSize,
             prevUrl : root + "/index.html/" + desc + "/" + prevPageSkip + "/" + pageSize,
+            currentUrl : root + "/index.html",
             winners : winners,
             pager : {
                 pageSize : pageSize,

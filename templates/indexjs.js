@@ -16,7 +16,7 @@
         var desc = true;
 
         var rowsTemplate = null;
-        var promise = $.get(config.templates + '/row.html', function(t) { rowsTemplate = t; });
+        var promise = $.get('{{templates}}/row.html', function(t) { rowsTemplate = t; });
 
         var loadPage = function(skip, limit) {
             var opt = {
@@ -91,5 +91,13 @@
         });
 
         $pager.find("a").click(function() { return false; });
+        
+        $pager.find("form").submit(function() {
+            var newPage = totalPages() - parseInt($pager.find("#page-num").val());
+            if((newPage || newPage==0) && newPage < totalPages() && newPage > -1) {
+                loadPage(skip(newPage), pageSize());
+            }
+            return false;
+        });
     });
 })(jQuery);
