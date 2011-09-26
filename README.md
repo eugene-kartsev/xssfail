@@ -59,6 +59,7 @@ Now that you have the `.couchapprc` file set up, you can push your app to the Co
 
 This pushes to the `default` as specified.
 
-* go to [http://localhost:5984/xss/_design/api/_views/index](http://localhost:5984/xss/_design/api/_views/index) to open default UI page
+* go to [http://localhost:5984/xss/_design/api/_rewrite/index.html](http://localhost:5984/xss/_design/api/_rewrite/index.html) to open default UI page
 * go to [http://localhost:5984/_utils](http://localhost:5984/_utils) to open database UI manager - [http://wiki.apache.org/couchdb/Getting_started_with_Futon](Futon)
+
 

@@ -1,4 +1,4 @@
-body { margin:0; padding:0; min-width:800px; }
+body { margin:0; padding:0; min-width:820px; }
 form {margin:0;padding:0;}
 table {border-collapse:collapse;border-spacing:0;}
 iframe { border:1px;margin:0;padding:0; }
@@ -177,3 +177,29 @@ ul li.getwinners table .pager select option {
 header ul { margin:0; padding:0; }
 header ul li { float:left; margin:0 0 0 10px; padding:0; }
 header div { clear:both; }
+header .github a,
+header .github a:visited,
+header .github a:visited { text-decoration:none;color:#2E83FF; }
+header div.github {
+    float:left;
+    font-size:18px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    margin: 2px 2px 2px 25px;
+    padding: 4px;
+    position:relative;
+}
+
+header div.github:before {
+    content: "";
+    background-color:red;
+    border-bottom:10px solid white;
+    border-right:15px solid red;
+    border-top: 10px solid white;
+    position:absolute;
+    right:100%;
+    width:20%;
+}
+
+

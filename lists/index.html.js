@@ -26,6 +26,7 @@ function(head, req) {
             css : root + "/style",
             img : root + "/img",
             js : root + "/js",
+            xss_js : root + "/xss.js",
             loader_js : root + "/js/loader.js",
             vendorjs : root + "/js/vendor/couchapp",
             tpl : root + "/templates",
