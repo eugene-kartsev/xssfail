@@ -16,6 +16,10 @@
         "to" : "_show/about.html"
     },
     {
+        "from" : "js/index.js",
+        "to" : "_show/index.js"
+    },
+    {
         "from" : "js/form.js",
         "to" : "_show/form.js"
     },

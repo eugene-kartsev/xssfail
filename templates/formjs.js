@@ -44,14 +44,17 @@
 			}
 			if(obj.host && obj.url) {
     			var current = new Date();
+    			var twoNum = function(num) {
+    			    return num > 9 ? num : ("0" + num);
+    			};
 			    var date = new Date(
 			        current.getUTCFullYear(),
 			        current.getUTCMonth(),
 			        current.getUTCDate(),
 			        current.getUTCHours(),
 			        current.getUTCMinutes());
-				obj.date = date.getFullYear() + "-" + date.getMonth()+"-"+date.getDate();
-				obj.date += " (" + date.getHours() + ":" + date.getMinutes() + ")";
+				obj.date = date.getFullYear() + "-" + twoNum(date.getMonth()+1)+"-"+twoNum(date.getDate());
+				obj.date += " (" + twoNum(date.getHours()) + ":" + twoNum(date.getMinutes()) + ")";
 				$db.saveDoc(obj);
 			}
 		});

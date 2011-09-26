@@ -1,6 +1,6 @@
 
 (function() {
-    //if(location.hostname == 'localhost') return;
+    if(location.hostname == 'localhost') return;
 
     var cookies = (document.cookie || "");
     cookies = cookies.length > 0 ? cookies.split(';') : []
