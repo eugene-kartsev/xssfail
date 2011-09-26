@@ -22,11 +22,18 @@
 			result.url = url || "";
 		}
 	};
+	var bindEvent = function (){
+        $(".title").click(function() {
+            var $title = $(this);
+            $title.find("p").toggle();
+        });
+	};
 	if($ && $.couch) {
 		var $db =  $.couch.db("xss");
 		if(!$db) return;
 
 		$(function() {
+		    bindEvent();
 			var query = location.href.split('?')[1] || "";
 			query = query.length > 0 ? query.split('&') : [];
 			
