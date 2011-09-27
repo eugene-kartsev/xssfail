@@ -15,12 +15,35 @@
     var append = function(el) { return document.body.appendChild(el); };
     
     var frame = create("iframe");
-    //<iframe src="http://localhost:5984/xss/_design/api/_rewrite/form.html" style="width:620px;height:820px;-moz-border-radius:15px;border:1px solid #bbb;;margin:0;padding:0;" />
-    frame.setAttribute('style', 'background:none repeat scroll 0 0 #FFFFFF; border:1px solid #bbb; -moz-border-radius:15px;border-radius:15px; display:block;  height:850px;left:50%;margin:0 0 0 -310px;padding:0;width:620px;position:absolute;z-index:101;');
+    var frameStyle = [
+        "height:850px",
+        "width:620px",
+        "position:absolute",
+        "top:100px", "left:50%",
+        "margin:0 0 0 -310px",
+        "background:none repeat scroll 0 0 #FFFFFF",
+        "border:1px solid #bbb",
+        "-moz-border-radius:15px",
+        "border-radius:15px",
+        "display:block",
+        "padding:0",
+        "z-index:101"
+    ];
+    frame.setAttribute('style', frameStyle.join(';'));
     frame.setAttribute('src', "{{form_html}}?" + query.join('&'));
     
     var fader = create("div");
-    fader.setAttribute('style', 'position: fixed; margin:-10px; width:100%; height:100%;background-color:#000; opacity:0.6; z-index:100');
+    var faderStyle = [
+        "position: fixed",
+        "top:0", "left:0",
+        "margin:-10px",
+        "width:100%",
+        "height:100%",
+        "background-color:#000",
+        "opacity:0.6",
+        "z-index:100"
+    ];
+    fader.setAttribute('style', faderStyle.join(';');
     
     append(fader);
     append(frame);
