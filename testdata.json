@@ -4,67 +4,85 @@
             "host" : "google.com",
             "date" : "2011-10-01",
             "url" : "http://google.com",
-            "cookies" : [{"test1":"test", "test2":"test2"}]
+            "cookies" : [
+                {
+                   "key": "i18n",
+                   "val": "culture=en-GB"
+                },
+                {
+                   "key": " .Web",
+                   "val": "0C77FAC3535C079CC2ED94BCB560BED579946B6837050AEF1DD418C227A5C7DB1F91D78E6C7865DA77A86FBA158AB63CD51DAA8196235C50867863173DA9040A656C3EE6DF211176332FD8601379BDADDF6B64A43F05A5CE3C91525B89E4BF876802982AAA4D89E0DFF668B9ED415592F77E861C38FD800C3661672FBBC65C77201A3F1DB12A40760F3E58AA1DE89660B5FA92AD890D140566571E484C1901C753ECE35B7B8957C082ADDC67A25E579240F4C6CAB6998BEC7271354701123FBEA4C5A4F8"
+                }
+            ]
         },
         {
             "host" : "microsoft.com",
             "date" : "2011-10-02",
             "url" : "http://microsoft.com",
-            "cookies" : [{"test1":"test", "test2":"test2"}]
+            "cookies" : [
+                {
+                   "key": "lang",
+                   "val": "en-GB"
+                },
+                {
+                   "key": " .Web",
+                   "val": "0C77FAC3535C079CC2ED94BCB560BED579946B6837050AEF1DD418C227A5C7DB1F91D78E6C7865DA77A86FBA158AB63CD51DAA8196235C50867863173DA9040A656C3EE6DF211176332FD8601379BDADDF6B64A43F05A5CE3C91525B89E4BF876802982AAA4D89E0DFF668B9ED415592F77E861C38FD800C3661672FBBC65C77201A3F1DB12A40760F3E58AA1DE89660B5FA92AD890D140566571E484C1901C753ECE35B7B8957C082ADDC67A25E579240F4C6CAB6998BEC7271354701123FBEA4C5A4F8"
+                }
+            ]
         },
         {
             "host" : "bing.com",
             "date" : "2011-10-03",
             "url" : "http://bing.com",
-            "cookies" : [{"test1":"test", "test2":"test2"}]
+            "cookies" : []
         },
         {
             "host" : "bash.org.ru",
             "date" : "2011-10-04",
             "url" : "http://bash.org.ru",
-            "cookies" : [{"test1":"test", "test2":"test2"}]
+            "cookies" : []
         },
         {
             "host" : "wikipedia.com",
             "date" : "2011-10-05",
             "url" : "http://wikipedia.com",
-            "cookies" : [{"test1":"test", "test2":"test2"}]
+            "cookies" : []
         },
         {
             "host" : "some-other-host.com",
             "date" : "2011-10-06",
             "url" : "http://some-other-host.com",
-            "cookies" : [{"test1":"test", "test2":"test2"}]
+            "cookies" : []
         },
         {
             "host" : "xssfail.com",
             "date" : "2011-10-07",
             "url" : "http://xssfail.com/index",
-            "cookies" : [{"test1":"test2", "test4":"test2"}]
+            "cookies" : []
         },
         {
             "host" : "yandex.ru",
             "date" : "2011-10-08",
             "url" : "http://yandex.ru/index",
-            "cookies" : [{"test1":"test2", "test4":"test2"}]
+            "cookies" : []
         },
         {
             "host" : "youtube.com",
             "date" : "2011-10-09",
             "url" : "http://youtube.com",
-            "cookies" : [{"test1":"test2", "test4":"test2"}]
+            "cookies" : []
         },
         {
             "host" : "go-go-go.com",
             "date" : "2011-10-10",
             "url" : "http://go-go-go.com",
-            "cookies" : [{"test1":"test2", "test4":"test2"}]
+            "cookies" : []
         },
         {
             "host" : "last.com",
             "date" : "2011-10-11",
             "url" : "http://last.com",
-            "cookies" : [{"test1":"test2", "test4":"test2"}]
+            "cookies" : []
         }
     ]
 }

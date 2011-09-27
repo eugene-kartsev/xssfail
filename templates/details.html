@@ -1,0 +1,74 @@
+{{>doctype}}
+<html>
+    {{>header}}
+    <body>
+        {{>mainmenu}}
+        <style>
+            body { min-width:800px; }
+            body, ul { padding:0; margin:0; border: 0; }
+            ul { list-style-type:none; }
+            .same-host {
+                margin:15px 15px 15px 0;
+                float:right;
+                width:100px;
+                text-align:center;
+            }
+            .same-host a, .same-host a:visited, .same-host a:hover {
+                text-decoration:none;
+            }
+            .same-host .current
+            {
+                border-bottom:1px solid #bbb;
+            }
+            .content{
+                float:left;
+                width:80%;
+                margin:15px 0 15px 15px;
+            }
+        </style>
+        
+        <div class="content">
+            {{#doc}}
+            <ul>
+                <li><label>Host:</label> {{host}}<li>
+                <li><label>Date:</label> {{date}}<li>
+                <li><label>Url:</label> {{url}}<li>
+                <li><label>Server:</label> {{server}}<li>
+                <li>
+                    <label>Cookies:</label>
+                    <ul class="cookies">
+                        {{#cookies}}<li><strong>{{key}}=</strong><textarea readonly="readonly">{{val}}</textarea></li>{{/cookies}}
+                    </ul>
+                <li>
+            </ul>
+            {{/doc}}
+        </div>
+        <ul class="same-host">
+            <!--<li class="current"><a href="#">2011-01-01</a></li>
+            <li><a href="#">2011-01-01</a></li>
+            <li><a href="#">2011-01-01</a></li>-->
+        </ul>
+        <script src="{{loader_js}}"></script>
+        <script>
+            $(function() {
+                var host = '{{#doc}}{{host}}{{/doc}}';
+                var id = '{{#doc}}{{_id}}{{/doc}}';
+                if(host) {
+                    $.couch.db("xss").view("api/items-by-host", {
+                        key:host,
+                        success : function(data) {
+                            if(data && data.rows) {
+                                var rows = data.rows;
+                                var len = rows.length;
+                                var $other = $(".same-host").empty();
+                                for(var i = 0; i < len; i++) {
+                                    $other.append("<li id="+ rows[i].id +"><a href='#'>" + rows[i].value.date + "</a></li>");
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        </script>
+    </body>
+</html>

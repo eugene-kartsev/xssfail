@@ -3,7 +3,7 @@ form {margin:0;padding:0;}
 table {border-collapse:collapse;border-spacing:0;}
 iframe { border:1px;margin:0;padding:0; }
 h1 { position:absolute; font-size:2.1em;padding:0;margin:-0.3em 0 0 0.9em; }
-ul {list-style-type:none;}
+ul {list-style-type:none;padding:0 0 0 25px;}
 ul li.injectscript, ul li.getform, ul li.getwinners
 { position:relative; padding:0; float:left; border-width:0 0 1px 1px; border-style:none none solid solid; margin-left:1%; -moz-border-radius:0 0 0 0.5em;border-radius:0 0 0 0.5em;-webkit-border-radius:0 0 0 0.5em; }
 
@@ -164,6 +164,13 @@ ul li.getwinners table .pager select,
 ul li.getwinners table .pager select option {
 	height:100%;
 	text-align:right;
+}
+
+ul.cookies { padding:0 0 0 5px; }
+ul.cookies li strong, ul.cookies li textarea {
+    display:inline;
+    vertical-align:top;
+    /*disable textarea resize: resize: none;*/
 }
 
 .head th { vertical-align:middle; }

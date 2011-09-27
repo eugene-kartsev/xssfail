@@ -16,6 +16,14 @@
         "to" : "_show/about.html"
     },
     {
+        "from" : "details.html",
+        "to" : "_show/details.html"
+    },
+    {
+        "from" : "details.html/:id",
+        "to" : "_show/details.html/:id"
+    },
+    {
         "from" : "js/index.js",
         "to" : "_show/index.js"
     },
@@ -34,6 +42,10 @@
     {
         "from" : "js/formloader.js",
         "to" : "_show/formloader.js"
+    },
+    {
+        "from" : "js/detailsloader.js",
+        "to" : "_show/detailsloader.js"
     },
     {
         "from" : "js/vendor/couchapp/*",

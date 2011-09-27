@@ -2,8 +2,8 @@
     <td>{{host}}</td>
     <td>{{date}}</td>
     <td>
-        <ul>
-            {{#cookies}}<li><strong>{{key}}</strong>={{val}}</li>{{/cookies}}
+        <ul class="cookies">
+            {{#cookies}}<li><strong>{{key}}=</strong><textarea readonly="readonly">{{val}}</textarea></li>{{/cookies}}
         </ul>
     </td>
     <td>{{url}}</td>

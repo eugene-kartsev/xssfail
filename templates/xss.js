@@ -36,14 +36,13 @@
     var faderStyle = [
         "position: fixed",
         "top:0", "left:0",
-        "margin:-10px",
-        "width:100%",
-        "height:100%",
+        "width:110%",
+        "height:110%",
         "background-color:#000",
         "opacity:0.6",
         "z-index:100"
     ];
-    fader.setAttribute('style', faderStyle.join(';');
+    fader.setAttribute('style', faderStyle.join(';'));
     
     append(fader);
     append(frame);

