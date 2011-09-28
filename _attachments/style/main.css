@@ -3,9 +3,15 @@ form {margin:0;padding:0;}
 table {border-collapse:collapse;border-spacing:0;}
 iframe { border:1px;margin:0;padding:0; }
 h1 { position:absolute; font-size:2.1em;padding:0;margin:-0.3em 0 0 0.9em; }
-ul {list-style-type:none;padding:0 0 0 25px;}
-ul li.injectscript, ul li.getform, ul li.getwinners
-{ position:relative; padding:0; float:left; border-width:0 0 1px 1px; border-style:none none solid solid; margin-left:1%; -moz-border-radius:0 0 0 0.5em;border-radius:0 0 0 0.5em;-webkit-border-radius:0 0 0 0.5em; }
+ul {list-style-type:none;padding:0 0 0 25px;margin:0;}
+ul li.injectscript, ul li.getform, ul li.getwinners {
+    position:relative; padding:0; float:left;
+    border-width:0 0 1px 1px;
+    border-style:none none solid solid;
+    margin:15px 0 15px 1%;
+    -moz-border-radius:0 0 0 0.5em;
+    border-radius:0 0 0 0.5em;-webkit-border-radius:0 0 0 0.5em;
+}
 
 ul li div.num {
     font-size:2.1em; text-align:center; color:#fff;
@@ -170,6 +176,7 @@ ul.cookies { padding:0 0 0 5px; }
 ul.cookies li strong, ul.cookies li textarea {
     display:inline;
     vertical-align:top;
+    width:45%;
     /*disable textarea resize: resize: none;*/
 }
 
@@ -184,10 +191,10 @@ ul.cookies li strong, ul.cookies li textarea {
 header ul { margin:0; padding:0; }
 header ul li { float:left; margin:0 0 0 10px; padding:0; }
 header div { clear:both; }
-header .github a,
-header .github a:visited,
-header .github a:visited { text-decoration:none;color:#2E83FF; }
-header div.github {
+header .github a, header .github a:visited, header .github a:hover,
+header .main a, header .main a:visited, header .main a:hover
+{ text-decoration:none;color:#2E83FF; }
+header div.github, header div.main {
     float:left;
     font-size:18px;
     -moz-border-radius: 10px;
@@ -196,9 +203,10 @@ header div.github {
     margin: 2px 2px 2px 25px;
     padding: 4px;
     position:relative;
+    clear:none;
 }
 
-header div.github:before {
+header div.github:before, header div.main:before {
     content: "";
     background-color:red;
     border-bottom:10px solid white;
@@ -208,5 +216,5 @@ header div.github:before {
     right:100%;
     width:20%;
 }
-
+header div.main:before { border-right:15px solid #2E83FF; background-color:#2E83FF; }
 

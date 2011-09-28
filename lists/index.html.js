@@ -33,6 +33,8 @@ function(head, req) {
             nextUrl : root + "/index.html/" + desc + "/" + nextPageSkip + "/" + pageSize,
             prevUrl : root + "/index.html/" + desc + "/" + prevPageSkip + "/" + pageSize,
             currentUrl : root + "/index.html",
+            detailsUrl : root + "/details.html",
+            indexUrl : root + "/index.html",
             winners : winners,
             pager : {
                 pageSize : pageSize,

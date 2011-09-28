@@ -13,7 +13,9 @@ function(doc, req) {
         css : root + "/style",
         img : root + "/img",
         js : root + "/js",
-        loader_js : root + "/js/detailsloader.js"
+        loader_js : root + "/js/detailsloader.js",
+        detailsUrl : root + "/details.html",
+        indexUrl : root + "/index.html"
     };
 
     return mustache.to_html(this.templates.details, data, this.templates.partials);

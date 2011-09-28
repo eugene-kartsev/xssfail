@@ -8,6 +8,7 @@ function(doc, req) {
         js : root + "/js",
         vendorjs : root + "/vendor/couchapp",
         templates : root + "/templates",
+        detailsUrl : root + "/details.html"
     };
     
     return mustache.to_html(this.templates.indexjs, data);

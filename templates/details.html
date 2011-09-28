@@ -4,25 +4,29 @@
     <body>
         {{>mainmenu}}
         <style>
-            body { min-width:800px; }
+            body { min-width:820px; }
             body, ul { padding:0; margin:0; border: 0; }
             ul { list-style-type:none; }
             .same-host {
                 margin:15px 15px 15px 0;
                 float:right;
-                width:100px;
+                width:22%;
                 text-align:center;
+                max-width:240px;
+                border-left:1px solid #bbb;
             }
             .same-host a, .same-host a:visited, .same-host a:hover {
                 text-decoration:none;
+                color:#2E83FF;
             }
             .same-host .current
             {
                 border-bottom:1px solid #bbb;
+                font-weight:bold;
             }
             .content{
                 float:left;
-                width:80%;
+                width:70%;
                 margin:15px 0 15px 15px;
             }
         </style>
@@ -43,11 +47,7 @@
             </ul>
             {{/doc}}
         </div>
-        <ul class="same-host">
-            <!--<li class="current"><a href="#">2011-01-01</a></li>
-            <li><a href="#">2011-01-01</a></li>
-            <li><a href="#">2011-01-01</a></li>-->
-        </ul>
+        <ul class="same-host"></ul>
         <script src="{{loader_js}}"></script>
         <script>
             $(function() {
@@ -60,10 +60,27 @@
                             if(data && data.rows) {
                                 var rows = data.rows;
                                 var len = rows.length;
-                                var $other = $(".same-host").empty();
+                                var records = [];
+                                var detailsUrl = '{{detailsUrl}}';
                                 for(var i = 0; i < len; i++) {
-                                    $other.append("<li id="+ rows[i].id +"><a href='#'>" + rows[i].value.date + "</a></li>");
+                                    var r = rows[i];
+                                    records.push({
+                                        id : r.id,
+                                        date : r.value.date,
+                                        url : detailsUrl + "/" + r.id,
+                                        current : r.id == id
+                                    });
                                 }
+                                var template = [
+"[[#records]]",
+"<li id='[[id]]'>",
+"[[^current]]<a href='[[url]]'>[[date]]</a>[[/current]]",
+"[[#current]]<span class='current'>[[date]]</span>[[/current]]",
+"</li>",
+"[[/records]]"].join('').replace(/\[/g, '{').replace(/\]/g, '}');
+
+                                $(".same-host").empty()
+                                    .append($.mustache(template, {records:records}));
                             }
                         }
                     });

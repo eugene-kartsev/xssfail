@@ -24,6 +24,10 @@
         "to" : "_show/details.html/:id"
     },
     {
+        "from" : "templates/*",
+        "to" : "_show/*"
+    },
+    {
         "from" : "js/index.js",
         "to" : "_show/index.js"
     },
@@ -71,9 +75,5 @@
     {
         "from" : "js/*",
         "to" : "js/*"
-    },
-    {
-        "from" : "templates/*",
-        "to" : "templates/*"
     }
 ]

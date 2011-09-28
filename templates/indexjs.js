@@ -28,7 +28,8 @@
                         var html = [];
                         for(var i in data.rows) {
                             var view = data.rows[i].value;
-                             html.push($.mustache(rowsTemplate, view));
+                            view.detailsUrl = '{{detailsUrl}}';
+                            html.push($.mustache(rowsTemplate, view));
                         }
                         $table.find("tr:not(.head)").remove();
                         $table.append(html.join(''));

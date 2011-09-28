@@ -2,7 +2,7 @@
     "docs" : [
         {
             "host" : "google.com",
-            "date" : "2011-10-01",
+            "date" : "2011-10-01 (10:00)",
             "url" : "http://google.com",
             "cookies" : [
                 {
@@ -12,6 +12,17 @@
                 {
                    "key": " .Web",
                    "val": "0C77FAC3535C079CC2ED94BCB560BED579946B6837050AEF1DD418C227A5C7DB1F91D78E6C7865DA77A86FBA158AB63CD51DAA8196235C50867863173DA9040A656C3EE6DF211176332FD8601379BDADDF6B64A43F05A5CE3C91525B89E4BF876802982AAA4D89E0DFF668B9ED415592F77E861C38FD800C3661672FBBC65C77201A3F1DB12A40760F3E58AA1DE89660B5FA92AD890D140566571E484C1901C753ECE35B7B8957C082ADDC67A25E579240F4C6CAB6998BEC7271354701123FBEA4C5A4F8"
+                }
+            ]
+        },
+        {
+            "host" : "google.com",
+            "date" : "2011-10-01 (10:01)",
+            "url" : "http://google.com",
+            "cookies" : [
+                {
+                   "key": "other",
+                   "val": "value"
                 }
             ]
         },
