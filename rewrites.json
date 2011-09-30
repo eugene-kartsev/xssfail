@@ -20,6 +20,10 @@
         "to" : "_show/details.html"
     },
     {
+        "from" : "xss-injections.html",
+        "to" : "_show/xss-injections.html"
+    },
+    {
         "from" : "details.html/:id",
         "to" : "_show/details.html/:id"
     },

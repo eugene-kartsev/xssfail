@@ -189,6 +189,8 @@ ul.cookies li strong, ul.cookies li textarea {
 
 .asc:hover img, .desc:hover img {background-position:-18px 3px;}
 
+
+header { background-color:#f3f3f3;border-bottom:1px solid #bbb; padding:2px 5px; margin: 0 0 10px 0; }
 header ul { margin:0; padding:0; }
 header ul li { float:left; margin:0 0 0 10px; padding:0; }
 header div { clear:both; }
@@ -207,15 +209,26 @@ header div.github, header div.main {
     clear:none;
 }
 
-header div.github:before, header div.main:before {
+header div.main:before {
     content: "";
-    background-color:red;
+    border-right:15px solid #2E83FF;
+    background-color:#2E83FF; ;
     border-bottom:10px solid white;
-    border-right:15px solid red;
     border-top: 10px solid white;
     position:absolute;
     right:100%;
-    width:20%;
 }
-header div.main:before { border-right:15px solid #2E83FF; background-color:#2E83FF; }
+header div.main:before { }
+
+header div.github:before {
+    content: "";
+    background-color:red;
+    border-bottom:10px solid white;
+    border-left:15px solid red;
+    border-top: 10px solid white;
+    position:absolute;
+    left:100%;
+}
+
+header div.github { float:right; margin:2px 25px 2px 2px; }
 

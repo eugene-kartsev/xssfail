@@ -35,6 +35,7 @@ function(head, req) {
             currentUrl : root + "/index.html",
             detailsUrl : root + "/details.html",
             indexUrl : root + "/index.html",
+            mainmenu : [{url:root + "/index.html", title:"Main"}, {url:root + "/xss-injections.html", title:"Other Injections"}],
             winners : winners,
             pager : {
                 pageSize : pageSize,
