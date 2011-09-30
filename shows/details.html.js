@@ -4,13 +4,13 @@ function(doc, req) {
     var redirect = require("vendor/couchapp/lib/redirect");
     var config = require("config").init();
 
-    var root = config.root;    
+    var root = config.root;
     
     if(!doc) return redirect.permanent(root + "/index.html");    
     
     var data = {
         doc : doc,
-        css : root + "/style",
+        styles : [{css : root + "/style/main.css"}],
         img : root + "/img",
         js : root + "/js",
         loader_js : root + "/js/detailsloader.js",

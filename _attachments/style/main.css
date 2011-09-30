@@ -10,7 +10,8 @@ ul li.injectscript, ul li.getform, ul li.getwinners {
     border-style:none none solid solid;
     margin:15px 0 15px 1%;
     -moz-border-radius:0 0 0 0.5em;
-    border-radius:0 0 0 0.5em;-webkit-border-radius:0 0 0 0.5em;
+    border-radius:0 0 0 0.5em;
+    -webkit-border-radius:0 0 0 0.5em;
 }
 
 ul li div.num {

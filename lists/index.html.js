@@ -23,7 +23,7 @@ function(head, req) {
 
         var root = config.root;
         var data = {
-            css : root + "/style",
+            styles : [{css:root + "/style/main.css"}],
             img : root + "/img",
             js : root + "/js",
             xss_js : root + "/xss.js",

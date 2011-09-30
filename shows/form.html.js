@@ -4,7 +4,7 @@ function(doc, req) {
     
     var root = config.root;
     var data = {
-        css : root + "/style",
+        styles : [{css : root + "/style/form.css"}],
         img : root + "/img",
         formloader_js : root + "/js/formloader.js",
         form_js : root + "/js/form.js"

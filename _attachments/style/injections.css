@@ -1,0 +1,29 @@
+
+.injections h1 {
+    margin:0 15px 15px 15px; 
+    padding:0;
+    position:relative;
+}
+.injections .instead-of {
+    float:left;
+    width: 40%;
+}
+.injections .instead-of strong { color:blue; }
+.injections .center { float:left; width:20%; }
+.injections .inject {
+    float:right;
+    width:40%;
+}
+.injections .inject strong { color:red; }
+.injections ul { margin:0; padding:0; }
+.injections li { min-height:150px; padding:15px; }
+.injections li:nth-child(odd) { background-color:#ebebeb; }
+.injections input {
+    background-color:#fff;
+    border:1px solid #bbb;
+    -moz-border-radius:0.2em;
+    -webkit-border-radius:0.2em;
+    border-radius:0.2em;
+    padding:2px 5px;
+}
+.injections .clear { clear:both; }

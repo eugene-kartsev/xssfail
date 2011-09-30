@@ -3,5 +3,11 @@ function(doc, req) {
     var path = require("vendor/couchapp/lib/path").init(req);
     var config = require("config").init();
     
-    return mustache.to_html(this.templates["xss-injections"], {}, this.templates.partials);
+    var root = config.root;
+    
+    var data = {
+        styles : [{css : root + "/style/main.css"}, {css : root + "/style/injections.css"}]
+    };
+    
+    return mustache.to_html(this.templates["xss-injections"], data, this.templates.partials);
 }
