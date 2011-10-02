@@ -135,8 +135,22 @@ ul li.getwinners table.rows td {
 	text-align:left;
 	font-size:0.75em;
 }
+ul li.getwinners a, ul li.getwinners a:hover, ul li.getwinners a:visited {
+    color:#2E83FF;
+    text-decoration:none;
+}
 ul li.getwinners table.rows tr:hover td {
 	background-color:#f4f4f4;
+}
+ul li.getwinners table.rows tr.selected td,
+ul li.getwinners table.rows tr.selected td a {
+    background-color:#FF6565;
+    color:#fff;
+    font-weight:bold;
+}
+ul li.getwinners table.rows tr.selected td a {
+    text-decoration:underline;
+
 }
 ul li.getwinners table th .pager {
 	text-align:right;
@@ -213,8 +227,8 @@ header div.main:before {
     content: "";
     border-right:15px solid #2E83FF;
     background-color:#2E83FF; ;
-    border-bottom:10px solid white;
-    border-top: 10px solid white;
+    border-bottom:10px solid #F3F3F3;
+    border-top: 10px solid #F3F3F3;
     position:absolute;
     right:100%;
 }
@@ -223,9 +237,9 @@ header div.main:before { }
 header div.github:before {
     content: "";
     background-color:red;
-    border-bottom:10px solid white;
+    border-bottom:10px solid #F3F3F3;
     border-left:15px solid red;
-    border-top: 10px solid white;
+    border-top: 10px solid #F3F3F3;
     position:absolute;
     left:100%;
 }

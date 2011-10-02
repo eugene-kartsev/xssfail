@@ -7,7 +7,8 @@ function(doc, req) {
     
     var data = {
         styles : [{css : root + "/style/main.css"}, {css : root + "/style/injections.css"}],
-        mainmenu : [{url:root + "/index.html", title:"Main"}, {url:root + "/xss-injections.html", title:"Other Injections"}]
+        mainmenu : [{url:root + "/index.html", title:"Main"}, {url:root + "/xss-injections.html", title:"Other Injections"}],
+        xss_js : root + "/xss.js"
     };
     
     return mustache.to_html(this.templates["xss-injections"], data, this.templates.partials);

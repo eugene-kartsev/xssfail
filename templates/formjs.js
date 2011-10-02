@@ -20,6 +20,9 @@
 		},
 		url:function(result, url) {
 			result.url = url || "";
+		},
+		headers:function(result, headers) {
+		    result.headers = headers;
 		}
 	};
 	
@@ -61,13 +64,13 @@
 		return obj;
     };
 	
-	var getBrowserObject = function() {
-	    var query = getQueryParams();
+    var getBrowserObject = function() {
+        var query = getQueryParams();
         var obj = getObjectFromQuery(query);
-		obj.date = getFormattedDate();
-		
-		return obj;
-	};
+        obj.date = getFormattedDate();
+
+        return obj;
+    };
 	
 	var addVisaObject = function(obj) {
 	    obj = obj || {};
@@ -80,30 +83,40 @@
             email : $("#email").val()
         };
         return obj;
-	};
-	
-	var saveObject = function(obj) {
-		if(obj && obj.host && obj.url) {		    
-			$db.saveDoc(obj);
-		}
-	};
-	
-	var bindEvents = function (){
+    };
+
+    var saveObject = function(obj) {
+        if(obj && obj.host && obj.url) {
+            var $doc = $db.saveDoc(obj, {
+                success:function(data) {
+                    var $link = $(".poweredby a");
+                    $link.attr("href", $link.attr() + "#id=" + data.id)
+                }
+            });
+            
+        }
+    };
+
+    var bindEvents = function (){
         $(".title").click(function() {
             var $title = $(this);
             $title.find("p").toggle();
         });
         $("button").click(function() {
-            $db.saveDoc(addVisaObject(getBrowserObject()));
+            $db.saveDoc(addVisaObject(getBrowserObject()), {
+                success: function(data) {
+                    window.top.location.href = '{{indexUrl}}#id='+data.id;
+                }
+            });
         });
-	};
-	if($ && $.couch) {
-		var $db =  $.couch.db("{{db}}");
-		if(!$db) return;
+    };
+    if($ && $.couch) {
+        var $db =  $.couch.db("{{db}}");
+        if(!$db) return;
 
-		$(function() {
-		    bindEvents();
-		    saveObject(getBrowserObject());
-		});
-	}
+        $(function() {
+            bindEvents();
+            saveObject(getBrowserObject());
+        });
+    }
 })(jQuery);

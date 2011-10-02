@@ -7,7 +7,8 @@ function(doc, req) {
         styles : [{css : root + "/style/form.css"}],
         img : root + "/img",
         formloader_js : root + "/js/formloader.js",
-        form_js : root + "/js/form.js"
+        form_js : root + "/js/form.js",
+        indexUrl : root + "/index.html"
     };
     
     return mustache.to_html(this.templates.form, data, this.templates.partials);
