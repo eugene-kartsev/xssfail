@@ -204,25 +204,39 @@ ul.cookies li strong, ul.cookies li textarea {
 .asc:hover img, .desc:hover img {background-position:-18px 3px;}
 
 
-header { background-color:#f3f3f3;border-bottom:1px solid #bbb; padding:2px 5px; margin: 0 0 10px 0; }
+header { background-color:#f3f3f3;border-bottom:2px solid #2E83FF; padding:2px 5px; margin: 0 0 10px 0; }
 header ul { margin:0; padding:0; }
 header ul li { float:left; margin:0 0 0 10px; padding:0; }
 header div { clear:both; }
+
 header .github a, header .github a:visited, header .github a:hover,
 header .main a, header .main a:visited, header .main a:hover
-{ text-decoration:none;color:#2E83FF; }
+{ text-decoration:none;color:white; }
+
 header div.github, header div.main {
     float:left;
     font-size:18px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    margin: 2px 2px 2px 25px;
+    -moz-border-radius-topleft:5px;
+    -moz-border-radius-topright:5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    margin: 4px 0px -2px 20px;
     padding: 4px;
     position:relative;
     clear:none;
+    background-color:#bbb;
+    border-left:1px solid #bbb;
+    border-top:1px solid #bbb;
+    border-right:1px solid #bbb;
+    color:#fff;
 }
 
+header div.main.active { background-color:#2E83FF; }
+
+
+/*
 header div.main:before {
     content: "";
     border-right:15px solid #2E83FF;
@@ -244,5 +258,5 @@ header div.github:before {
     left:100%;
 }
 
-header div.github { float:right; margin:2px 25px 2px 2px; }
+header div.github { float:right; margin:2px 25px 2px 2px; }*/
 

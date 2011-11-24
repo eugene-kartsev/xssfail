@@ -7,7 +7,7 @@ function(doc, req) {
     
     var data = {
         styles : [{css : root + "/style/main.css"}, {css : root + "/style/injections.css"}],
-        mainmenu : [{url:root + "/index.html", title:"Main"}, {url:root + "/xss-injections.html", title:"Other Injections"}],
+        mainmenu : [{url:root + "/index.html", title:"Main"}, {url:root + "/xss-injections.html", title:"Other Injections", active:1}],
         xss_js : root + "/xss.js"
     };
     

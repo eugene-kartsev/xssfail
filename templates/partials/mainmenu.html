@@ -1,9 +1,14 @@
 <header>
     {{#mainmenu}}
-    <div class="main"><a href="{{url}}">{{title}}</a></div>
+    <div class="main{{#active}} active{{/active}}">
+        {{^active}}<a href="{{url}}">{{title}}</a>{{/active}}
+        {{#active}}<span>{{title}}</span>{{/active}}
+    </div>
     {{/mainmenu}}
     <div class="github">
+        {{^active}}
         <a href="https://github.com/eugene-kartsev/xssfail">GitHub</a>
+        {{/active}}
     </div>
     <div></div>
 </header>
