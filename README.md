@@ -23,8 +23,9 @@ where param1, param2, paramN - all information about UserA (including browser co
 ### Before you start
 
 Before you start using this app, it's necessary to:
-* [Install CouchDB](http://wiki.apache.org/couchdb/Installation) v.1.1.x or greater. More info about couchDB [here](http://wiki.apache.org/couchdb/).
-* [Install CouchApp](http://couchapp.org/page/installing). More info about couchApp [here](http://couchapp.org/page/index).
+
+1. [Install CouchDB](http://wiki.apache.org/couchdb/Installation) v.1.1.x or greater. More info about couchDB [here](http://wiki.apache.org/couchdb/).
+2. [Install CouchApp](http://couchapp.org/page/installing). More info about couchApp [here](http://couchapp.org/page/index).
 
 CouchApps are web applications which can be served directly from [CouchDB](http://couchdb.apache.org).
 This gives them the nice property of replicating just like any other data stored in CouchDB.
