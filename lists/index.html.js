@@ -25,7 +25,7 @@ function(head, req) {
         var data = {
             styles : [{css:root + "/style/main.css"}],
             img : root + "/img",
-            js : root + "/js",
+            js : {src: root + "/js/index.js"},
             xss_js : root + "/xss.js",
             loader_js : root + "/js/loader.js",
             vendorjs : root + "/js/vendor/couchapp",
@@ -35,7 +35,7 @@ function(head, req) {
             currentUrl : root + "/index.html",
             detailsUrl : root + "/details.html",
             indexUrl : root + "/index.html",
-            mainmenu : [{url:root + "/index.html", title:"Main", active: 1}, {url:root + "/xss-injections.html", title:"Other Injections"}],
+            mainmenu : [{url:root + "/index.html", title:"Main", active: 1}, {url:root+"/test.html", title:"Test injection"}, {url:root + "/xss-injections.html", title:"Other Injections"}],
             winners : winners,
             pager : {
                 pageSize : pageSize,

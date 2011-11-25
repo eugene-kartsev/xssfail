@@ -16,6 +16,10 @@
         "to" : "_show/about.html"
     },
     {
+        "from" : "test.html",
+        "to" : "_show/test.html"
+    },
+    {
         "from" : "details.html",
         "to" : "_show/details.html"
     },

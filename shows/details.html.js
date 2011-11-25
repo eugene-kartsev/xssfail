@@ -28,7 +28,7 @@ function(doc, req) {
         loader_js : root + "/js/detailsloader.js",
         detailsUrl : root + "/details.html",
         indexUrl : root + "/index.html",
-        mainmenu : [{url:root + "/index.html", title:"Main"}, {url:root + "/xss-injections.html", title:"Other Injections"},{title: "Injection > " + trim(doc.host), active:1}]
+        mainmenu : [{url:root + "/index.html", title:"Main"}, {url:root+"/test.html", title:"Test injection"}, {url:root + "/xss-injections.html", title:"Other Injections"},{title: "Injection > " + trim(doc.host), active:1}]
     };
 
     return mustache.to_html(this.templates.details, data, this.templates.partials);
