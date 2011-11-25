@@ -28,8 +28,8 @@
                 float:left;
                 width:70%;
                 margin:15px 0 15px 15px;
+                font-size:0.75em;
             }
-            
             .content > table {
                 border:1px solid #bbb;
                 text-align:left;
@@ -53,13 +53,16 @@
             }
             .content > table table {
                 width:90%;
-                margin:10px;
+                margin:10px auto 10px auto;
             }
             .content > table table th { 
                 width:30%;
             }
             .content > table table textarea {
                 width:95%;
+            }
+            .content > table tr.list > th {
+                vertical-align:top;
             }
         </style>
         
@@ -84,7 +87,7 @@
                     <td>{{server}}</td>
                 </tr>
                 {{/server}}
-                <tr>
+                <tr class="list">
                     <th>cookies</th>
                     <td>
                         <table>
@@ -97,7 +100,7 @@
                         </table>
                     </td>
                 </tr>
-                <tr>
+                <tr class="list">
                     <th>headers</th>
                     <td>
                         <table>

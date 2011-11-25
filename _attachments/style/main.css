@@ -234,7 +234,7 @@ header div.github, header div.main {
 }
 
 header div.main.active { background-color:#2E83FF; }
-
+header div.github { float:right; }
 
 /*
 header div.main:before {
