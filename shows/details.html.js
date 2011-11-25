@@ -13,6 +13,13 @@ function(doc, req) {
         var trimLen = 15;
         return str.length <= trimLen ? str : (str.substring(0,trimLen) + "...");
     };
+    
+    var headers = doc.headers || [];
+    for(var i = 0; i < headers.length; i++) {
+        if(headers[i].key.toLowerCase() == "server") {
+            doc.server = headers[i].val;
+        }
+    }
     var data = {
         doc : doc,
         styles : [{css : root + "/style/main.css"}],

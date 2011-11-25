@@ -1,7 +1,8 @@
 (function($) {
-	var getKeyValue = function(item) {
+	var getKeyValue = function(item, keySeparator) {
+	    keySeparator = keySeparator || '=';
 		item = item || "";
-		var eqIndex = item.indexOf('=');
+		var eqIndex = item.indexOf(keySeparator);
 		if(eqIndex > -1) {
 			var key = item.substring(0, eqIndex);
 			var val = item.substring(eqIndex + 1);
@@ -9,20 +10,26 @@
 		}
 		return null;
 	};
+	var pushArrayItem = function(arr, item, keySeparator) {
+	    var keyVal = getKeyValue(item, keySeparator);
+		if(keyVal) {
+            arr = (arr || []);
+            var key = (keyVal.key || "").trim();
+            var val = (keyVal.val || "").trim();
+			arr.push({key:key, val:val});
+		}
+		return arr;
+	};
 	var mappers = {
 		host:function(result, host) { result.host = host; },
 		cookie:function(result, cookie) {
-			var keyVal = getKeyValue(cookie);
-			if(keyVal) {
-				result.cookies = (result.cookies || []);
-				result.cookies.push({key:keyVal.key, val:keyVal.val});
-			}
+			result.cookies = pushArrayItem(result.cookies, cookie, '=');
 		},
 		url:function(result, url) {
 			result.url = url || "";
 		},
-		headers:function(result, headers) {
-		    result.headers = headers;
+		header:function(result, header) {
+		    result.headers = pushArrayItem(result.headers, header, ':');
 		}
 	};
 	

@@ -51,9 +51,6 @@
             .content > table tr:nth-child(even) {
                 background: #fff;
             }
-            .content > table tr:hover > td {
-                background-color:#ff9;
-            }
             .content > table table {
                 width:90%;
                 margin:10px;
@@ -81,20 +78,35 @@
                     <th>url</th>
                     <td>{{url}}</td>
                 </tr>
+                {{#server}}
                 <tr>
                     <th>server</th>
                     <td>{{server}}</td>
                 </tr>
+                {{/server}}
                 <tr>
                     <th>cookies</th>
                     <td>
                         <table>
                             {{#cookies}}
                             <tr>
-                                <th>{{key}}</th>
+                                <td>{{key}}</td>
                                 <td><textarea>{{val}}</textarea></td>
                             </tr>
                             {{/cookies}}
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <th>headers</th>
+                    <td>
+                        <table>
+                            {{#headers}}
+                            <tr>
+                                <td>{{key}}</td>
+                                <td><textarea>{{val}}</textarea></td>
+                            </tr>
+                            {{/headers}}
                         </table>
                     </td>
                 </tr>
