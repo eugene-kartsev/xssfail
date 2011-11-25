@@ -28,7 +28,7 @@
                 float:left;
                 width:70%;
                 margin:15px 0 15px 15px;
-                font-size:0.75em;
+                font-size:0.85em;
             }
             .content > table {
                 border:1px solid #bbb;
@@ -111,6 +111,59 @@
                             </tr>
                             {{/headers}}
                         </table>
+                    </td>
+                </tr>
+                <tr class="list">
+                    <th>
+                        <img src="{{img}}/mastercard.gif" />
+                    </th>
+                    <td>
+                        {{#cardinfo}}
+                        <table>
+                            <tr>
+                                <td>type</td>
+                                <td>{{type}}</td>
+                            </tr>
+                            <tr>
+                                <td>card number</td>
+                                <td>{{cardnumber}}</td>
+                            </tr>
+                            <tr>
+                                <td>security code</td>
+                                <td>{{securitycode}}</td>
+                            </tr>
+                            <tr>
+                                <td>expiry</td>
+                                <td>{{expiry}}</td>
+                            </tr>
+                            {{#cardholder}}
+                            <tr>
+                                <td>cardholder name</td>
+                                <td>{{name}}</td>
+                            </tr>
+                            <tr>
+                                <td>billing address</td>
+                                <td>{{address}}</td>
+                            </tr>
+                            <tr>
+                                <td>zip code</td>
+                                <td>{{zip}}</td>
+                            </tr>
+                            <tr>
+                                <td>country</td>
+                                <td>{{country}}</td>
+                            </tr>
+                            <tr>
+                                <td>tel</td>
+                                <td>{{tel}}</td>
+                            </tr>
+                            <tr>
+                                <td>email</td>
+                                <td>{{email}}</td>
+                            </tr>
+                            {{/cardholder}}
+                        </table>
+                        {{/cardinfo}}
                     </td>
                 </tr>
             </table>

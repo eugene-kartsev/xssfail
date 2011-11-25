@@ -79,30 +79,28 @@
         return obj;
     };
 	
-	var addVisaObject = function(obj) {
-	    obj = obj || {};
-	    obj.card = {
+	var addVisaObject = function(doc) {
+	    doc = doc || {};
+	    doc.cardinfo = {
+	        type : $(".payment-method input[checked]").val(),
             cardnumber : $("#cardnumber").val(),
-            securitycode : $("#securitycode").val()
+            securitycode : $("#securitycode").val(),
+            expiry : $("#expiryyear").val() + "/" + $("#expirymonth").val(),
+            cardholder : {
+                name : $("#cardholdername").val(),
+                address : $("#billingaddress").val(),
+                zip : $("#postcode").val(),
+                country : $("#country").val(),
+                tel : $("#telephone").val(),
+                fax : $("#fax").val(),
+                email : $("#email").val()
+            }
         };
-        obj.cardholder = {
-            name : $("#cardholdername").val(),
-            email : $("#email").val()
-        };
-        return obj;
+        return doc;
     };
 
-    var saveObject = function(obj) {
-        if(obj && obj.host && obj.url) {
-            var $doc = $db.saveDoc(obj, {
-                success:function(data) {
-                    var $link = $(".poweredby a");
-                    $link.attr("href", $link.attr() + "#id=" + data.id)
-                }
-            });
-            
-        }
-    };
+    this.docid = null;
+    var _self = this;
 
     var bindEvents = function (){
         $(".title").click(function() {
@@ -110,9 +108,13 @@
             $title.find("p").toggle();
         });
         $("button").click(function() {
-            $db.saveDoc(addVisaObject(getBrowserObject()), {
-                success: function(data) {
-                    window.top.location.href = '{{indexUrl}}#id='+data.id;
+            $db.openDoc(_self.docid, {
+                success: function(doc) {
+                    $db.saveDoc(addVisaObject(doc), {
+                        success: function() {
+                            window.top.location.href = '{{detailsUrl}}/'+_self.docid;
+                        }
+                    });
                 }
             });
         });
@@ -123,7 +125,16 @@
 
         $(function() {
             bindEvents();
-            saveObject(getBrowserObject());
+            var doc = getBrowserObject();
+            if(doc && doc.host && doc.url) {
+                var $doc = $db.saveDoc(doc, {
+                    success:function(data) {
+                        _self.docid = data.id;
+                        var $link = $(".poweredby a");
+                        $link.attr("href", '{{detailsUrl}}/'+_self.docid)
+                    }
+                });
+            }
         });
     }
 })(jQuery);

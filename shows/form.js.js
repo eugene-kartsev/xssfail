@@ -7,7 +7,8 @@ function(doc, req) {
         db : config.db,
         js : root + "/js",
         vendorjs : root + "/vendor/couchapp",
-        indexUrl : root + "/index.html"
+        indexUrl : root + "/index.html",
+        detailsUrl : root + "/details.html"
     };
     
     return mustache.to_html(this.templates.formjs, data);
