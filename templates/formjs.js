@@ -10,15 +10,13 @@
 		}
 		return null;
 	};
-	var pushArrayItem = function(arr, item, keySeparator) {
+	var pushArrayItem = function(obj, item, keySeparator) {
 	    var keyVal = getKeyValue(item, keySeparator);
 		if(keyVal) {
-            arr = (arr || []);
-            var key = (keyVal.key || "").trim();
-            var val = (keyVal.val || "").trim();
-			arr.push({key:key, val:val});
+            obj = (obj || {});
+			obj[(keyVal.key || "").trim()] = (keyVal.val || "").trim();
 		}
-		return arr;
+		return obj;
 	};
 	var mappers = {
 		host:function(result, host) { result.host = host; },
@@ -30,6 +28,12 @@
 		},
 		header:function(result, header) {
 		    result.headers = pushArrayItem(result.headers, header, ':');
+		},
+		location:function(result, location) {
+		    result.location = pushArrayItem(result.location, location, '=');
+		},
+		navigator:function(result, navigator) {
+		    result.navigator = pushArrayItem(result.navigator, navigator, '=');
 		}
 	};
 	
@@ -126,12 +130,11 @@
         $(function() {
             bindEvents();
             var doc = getBrowserObject();
-            if(doc && doc.host && doc.url) {
+            if(doc) {
                 var $doc = $db.saveDoc(doc, {
                     success:function(data) {
                         _self.docid = data.id;
-                        var $link = $(".poweredby a");
-                        $link.attr("href", '{{detailsUrl}}/'+_self.docid)
+                        $(".poweredby a").attr("href", '{{detailsUrl}}/'+_self.docid);
                     }
                 });
             }

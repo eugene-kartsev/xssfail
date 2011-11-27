@@ -14,12 +14,26 @@ function(doc, req) {
         return str.length <= trimLen ? str : (str.substring(0,trimLen) + "...");
     };
     
+    var mapList = function(obj) {
+        var arr = [];
+        for(var name in obj) {
+            if(obj.hasOwnProperty(name)) {
+                arr.push({key:name, val: obj[name]});
+            }
+        }
+        return arr;
+    };
     var headers = doc.headers || [];
     for(var i = 0; i < headers.length; i++) {
         if(headers[i].key.toLowerCase() == "server") {
             doc.server = headers[i].val;
         }
     }
+    
+    doc.headers = mapList(doc.headers);
+    doc.location = mapList(doc.location);
+    doc.cookies = mapList(doc.cookies);
+    
     var data = {
         doc : doc,
         styles : [{css : root + "/style/main.css"}],

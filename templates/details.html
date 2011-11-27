@@ -77,16 +77,25 @@
                     <th>date</th>
                     <td>{{date}}</td>
                 </tr>
-                <tr>
-                    <th>url</th>
-                    <td>{{url}}</td>
-                </tr>
                 {{#server}}
                 <tr>
                     <th>server</th>
                     <td>{{server}}</td>
                 </tr>
                 {{/server}}
+                <tr class="list">
+                    <th>location</th>
+                    <td>
+                        <table>
+                            {{#location}}
+                            <tr>
+                                <td>{{key}}</td>
+                                <td><textarea>{{val}}</textarea></td>
+                            </tr>
+                            {{/location}}
+                        </table>
+                    </td>
+                </tr>
                 <tr class="list">
                     <th>cookies</th>
                     <td>
@@ -97,6 +106,19 @@
                                 <td><textarea>{{val}}</textarea></td>
                             </tr>
                             {{/cookies}}
+                        </table>
+                    </td>
+                </tr>
+                <tr class="list">
+                    <th>navigator</th>
+                    <td>
+                        <table>
+                            {{#navigator}}
+                            <tr>
+                                <td>{{key}}</td>
+                                <td><textarea>{{val}}</textarea></td>
+                            </tr>
+                            {{/navigator}}
                         </table>
                     </td>
                 </tr>
@@ -113,12 +135,12 @@
                         </table>
                     </td>
                 </tr>
+                {{#cardinfo}}
                 <tr class="list">
                     <th>
-                        <img src="{{img}}/mastercard.gif" />
+                        <img src="{{img}}/{{type}}.gif" />
                     </th>
                     <td>
-                        {{#cardinfo}}
                         <table>
                             <tr>
                                 <td>type</td>
@@ -163,9 +185,9 @@
                             </tr>
                             {{/cardholder}}
                         </table>
-                        {{/cardinfo}}
                     </td>
                 </tr>
+                {{/cardinfo}}
             </table>
             {{/doc}}
         </div>

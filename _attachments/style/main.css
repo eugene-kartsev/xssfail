@@ -125,7 +125,7 @@ ul li.getwinners table.rows th {
 	border: 1px solid #E0E0FF;
 	padding:4px;
 	text-align:left;
-	background-color:#F6F6FF;
+	background-color:#F3F3F3;
 	color:green;
 	font-size:0.9em;
 }
@@ -140,7 +140,7 @@ ul li.getwinners a, ul li.getwinners a:hover, ul li.getwinners a:visited {
     text-decoration:none;
 }
 ul li.getwinners table.rows tr:hover td {
-	background-color:#f4f4f4;
+	background-color:#DDDDEE;
 }
 ul li.getwinners table.rows tr.selected td,
 ul li.getwinners table.rows tr.selected td a {
@@ -234,7 +234,7 @@ header div.github, header div.main {
 }
 
 header div.main.active { background-color:#2E83FF; }
-header div.github { float:right; }
+header div.github { float:right;  }
 
 /*
 header div.main:before {
