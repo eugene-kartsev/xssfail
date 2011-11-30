@@ -29,22 +29,76 @@
                 width:70%;
                 margin:15px 0 15px 15px;
             }
+            
+            .content > table {
+                border:1px solid #bbb;
+                text-align:left;
+                width:100%;
+            }
+            .content > table th,
+            .content > table td {
+                padding: 3px;
+                border:1px solid #bbb;
+            }
+            .content > table th {
+                width:25%;
+                background-color:#333;
+                color:#bbb;
+            }
+            .content > table tr:nth-child(odd) {
+                background: #f3f3f3;
+            }
+            .content > table tr:nth-child(even) {
+                background: #fff;
+            }
+            .content > table tr:hover > td {
+                background-color:#ff9;
+            }
+            .content > table table {
+                width:90%;
+                margin:10px;
+            }
+            .content > table table th { 
+                width:30%;
+            }
+            .content > table table textarea {
+                width:95%;
+            }
         </style>
         
         <div class="content">
             {{#doc}}
-            <ul>
-                <li><label>Host:</label> {{host}}<li>
-                <li><label>Date:</label> {{date}}<li>
-                <li><label>Url:</label> {{url}}<li>
-                <li><label>Server:</label> {{server}}<li>
-                <li>
-                    <label>Cookies:</label>
-                    <ul class="cookies">
-                        {{#cookies}}<li><strong>{{key}}=</strong><textarea readonly="readonly">{{val}}</textarea></li>{{/cookies}}
-                    </ul>
-                <li>
-            </ul>
+            <table>
+                <tr>
+                    <th>host</th>
+                    <td>{{host}}</td>
+                </tr>
+                <tr>
+                    <th>date</th>
+                    <td>{{date}}</td>
+                </tr>
+                <tr>
+                    <th>url</th>
+                    <td>{{url}}</td>
+                </tr>
+                <tr>
+                    <th>server</th>
+                    <td>{{server}}</td>
+                </tr>
+                <tr>
+                    <th>cookies</th>
+                    <td>
+                        <table>
+                            {{#cookies}}
+                            <tr>
+                                <th>{{key}}</th>
+                                <td><textarea>{{val}}</textarea></td>
+                            </tr>
+                            {{/cookies}}
+                        </table>
+                    </td>
+                </tr>
+            </table>
             {{/doc}}
         </div>
         <ul class="same-host"></ul>
