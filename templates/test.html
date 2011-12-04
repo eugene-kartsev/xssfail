@@ -1,0 +1,55 @@
+{{>doctype}}
+<html>
+    {{>header}}
+    <body>
+        {{>mainmenu}}
+        <style>
+            #edit {
+                background: none repeat scroll 0 0 #FFEEEE;
+                border: 4px solid #EEDDDD;
+                margin: 8px;
+                padding: 8px;
+                float:right;
+                width:45%;
+            }
+            #view {
+                background: none repeat scroll 0 0 #EEEEFF;
+                border: 4px solid #DDDDEE;
+                margin: 8px;
+                padding: 8px;
+                width: 45%;
+                float:left;
+            }
+            h3 { margin: 3px 0; padding:0; }
+        </style>
+        <div id="edit">
+            <h3>View Product</h3>
+            <p>
+                <label>Name:*</label>
+                <span id="product-view"></span>
+            </p>
+            <hr/>
+            <p>* - field will be populated with &lt;script&gt; tag</p>
+        </div>
+        
+        <div id="view">
+            <h3>Edit Product</h3>
+            <p>
+                <label>Name:</label>
+                <input id="product-edit" value="&lt;script src=&quot;{{xss_js}}&quot;&gt;&lt;/script&gt;" readonly="readonly" />
+            </p>
+            <hr/>
+            <button>Save *</button>
+            <p>* - instead of <strong>Product Name</strong> a &lt;script&gt; tag will be saved in the database</p>
+        </div>
+        
+        <script src="{{loader_js}}"></script>
+        <script>
+            $(function() {
+                $("button").click(function() {
+                    $("#product-view").html($("#product-edit").val());
+                });
+            });
+        </script>
+    </body>
+</html>
