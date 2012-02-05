@@ -1,0 +1,68 @@
+{{>doctype}}
+<html>
+    {{>header}}
+    <body>
+        {{>logo}}
+        {{>menu}}
+        {{>breadcrumbs}}
+        
+        <h3>UTC Date: {{utc}}</h3>
+        <h3>GMT: {{gmt}}</h3>
+        
+        <div class="tree">
+            <table class="hosts">
+                {{#values}}
+                    <tr>
+                        <th>
+                            <a href="#">{{name}}</a>
+                        </th>
+                        <th></th>
+                    </tr>
+                    {{#node}}
+                        <tr class="node{{depth}}
+                                   path-{{path}}
+                                   {{#haschild}} parent collapsed{{/haschild}}
+                                   {{#hasparent}} child parent-{{/hasparent}}{{parent}}">
+                            <td class="node{{depth}}">
+                                <input type="hidden" name="index" value="{{depth}}" />
+                                <input type="hidden" name="nodename" value="{{name}}" />
+                                <input type="hidden" name="path" value="{{path}}" />
+                                {{name}}
+                            </td>
+                            <td>{{value}}</td>
+                        </tr>
+                    {{/node}}
+                {{/values}}
+            </table>
+        </div>
+
+        {{>js}}
+        <script>
+            $(function() {
+                $(".hosts tr.parent").click(function() {
+                    var $this = $(this);
+                    var index = parseInt($this.find("input").val());
+                    var nodeName = $this.find("input[name='nodename']").val();
+                    var path = $this.find("input[name='path']").val();
+
+                    var expand = function() {
+                        $(".hosts tr.node" + (index + 1) + ".parent-" + (path)).show();
+                        $this.removeClass("collapsed").addClass("expanded");
+                    };
+
+                    var collapse = function() {
+                        //$(".hosts tr.node" + (index + 1) + ".parent-" + (path)).show();
+                        $("tr[class*=" + path + "-]").hide();
+                        $this.removeClass("expanded").addClass("collapsed");
+                    };
+
+                    if($this.hasClass("collapsed")) {
+                        expand();
+                    } else if($this.hasClass("expanded")) {
+                        collapse();
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

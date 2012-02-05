@@ -1,0 +1,34 @@
+{{>doctype}}
+<html>
+    {{>header}}
+    <body>
+        {{>logo}}
+        {{>menu}}
+        {{>breadcrumbs}}
+        <div class="grid">
+            <table class="pages">
+                <tr>
+                    <th>
+                        <a href="#">page</a>
+                    </th>
+                </tr>
+                {{#pages}}
+                    <tr>
+                        <td><a href="{{root}}/page.html/{{pageId}}">{{page}}</a></td>
+                    </tr>
+                {{/pages}}
+            </table>
+        </div>
+        {{>js}}
+        <script>
+            $(function() {
+                $("table.pages tr").click(function() {
+                    var $tr = $(this);
+                    var href = $tr.find("td a:first").attr("href");
+                    if(href)
+                        location.href = href;
+                });
+            });
+        </script>
+    </body>
+</html>

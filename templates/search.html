@@ -1,0 +1,38 @@
+{{>doctype}}
+<html>
+    {{>header}}
+    <body>
+        {{>logo}}
+        {{>menu}}
+        {{>breadcrumbs}}
+        <div class="grid">
+            <table class="hosts">
+                <tr>
+                    <th>
+                        <a href="#">host</a>
+                    </th>
+                    <th>
+                        <a href="#">injections</a>
+                    </th>
+                </tr>
+                {{#hosts}}
+                    <tr>
+                        <td><a href="{{root}}/pages.html/{{host}}">{{host}}</a></td>
+                        <td>{{num}}</td>
+                    </tr>
+                {{/hosts}}
+            </table>
+        </div>
+        {{>js}}
+        <script>
+            $(function() {
+                $("table.hosts tr").click(function() {
+                    var $tr = $(this);
+                    var href = $tr.find("td a:first").attr("href");
+                    if(href)
+                        location.href = href;
+                });
+            });
+        </script>
+    </body>
+</html>
