@@ -45,13 +45,20 @@
                     var nodeName = $this.find("input[name='nodename']").val();
                     var path = $this.find("input[name='path']").val();
 
+                    if(!$this.xssInner) {
+                        $this.xssInner = {
+                            closest : $(".hosts tr.node" + (index + 1) + ".parent-" + (path)),
+                            all : $("tr[class*=" + path + "-]")
+                        };
+                    }
+
                     var expand = function() {
-                        $(".hosts tr.node" + (index + 1) + ".parent-" + (path)).show();
+                        $this.xssInner.closest.show();
                         $this.removeClass("collapsed").addClass("expanded");
                     };
 
                     var collapse = function() {
-                        $("tr[class*=" + path + "-]").hide();
+                        $this.xssInner.all.hide();
                         $this.removeClass("expanded").addClass("collapsed");
                     };
 
