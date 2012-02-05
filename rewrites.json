@@ -8,6 +8,30 @@
         }
     },
     {
+        "from" : "index2.html",
+        "to" : "_show/index2.html"
+    },
+    {
+        "from" : "search.html",
+        "to" : "_list/search.html/search",
+        "query" : {
+            "descending" : "false",
+            "limit" : "20",
+            "group" : "true"
+        }
+    },
+    {
+        "from" : "pages.html/:key",
+        "to" : "_list/pages.html/pages",
+        "query" : { 
+            "key" : ":key"
+        }
+    },
+    {
+        "from" : "page.html/:key",
+        "to" : "_show/page.html/:key"
+    },
+    {
         "from" : "form.html",
         "to" : "_show/form.html"
     },

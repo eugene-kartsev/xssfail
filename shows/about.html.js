@@ -7,7 +7,7 @@ function(doc, req) {
     var data = {
         css : root + "/style",
         img : root + "/img",
-        js : root + "/js",
+        js : root + "/js"
     };
     
     return mustache.to_html(this.templates.about, data, this.templates.partials);
