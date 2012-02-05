@@ -207,13 +207,13 @@ a[xss-title]:hover:after
 .tree table td.node1 {padding-left:20px;}
 .tree table td.node2 {padding-left:40px;}
 .tree table td.node3 {padding-left:60px;}
-.tree table td.node4 {padding-left:70px;}
-.tree table td.node5 {padding-left:80px;}
-.tree table td.node6 {padding-left:100px;}
-.tree table td.node7 {padding-left:120px;}
-.tree table td.node8 {padding-left:140px;}
-.tree table td.node9 {padding-left:160px;}
-.tree table td.node10 {padding-left:180px;}
+.tree table td.node4 {padding-left:80px;}
+.tree table td.node5 {padding-left:100px;}
+.tree table td.node6 {padding-left:120px;}
+.tree table td.node7 {padding-left:140px;}
+.tree table td.node8 {padding-left:160px;}
+.tree table td.node9 {padding-left:180px;}
+.tree table td.node10 {padding-left:200px;}
 
 .tree table th a,
 .tree table th a:hover

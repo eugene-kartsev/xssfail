@@ -1,15 +1,7 @@
 [
     {
         "from" : "index.html",
-        "to" : "_list/index.html/items-by-date",
-        "query" : {
-            "descending" : "true",
-            "limit" : "20"
-        }
-    },
-    {
-        "from" : "index2.html",
-        "to" : "_show/index2.html"
+        "to" : "_show/index.html"
     },
     {
         "from" : "search.html",

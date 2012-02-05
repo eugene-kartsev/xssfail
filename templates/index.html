@@ -2,40 +2,14 @@
 <html>
     {{>header}}
     <body>
-        {{>mainmenu}}
-        <ul>
-            <li class="injectscript">{{>inject}}</li>
-            <li class="getform">{{>getform}}</li>
-            <li class="getwinners">
-                <h1>Search for &quot;WINNERS&quot;</h1>
-                <div class="num">3</div>
-				<table id="rows" class="rows">
-					<tr class="head">
-						<th colspan="5">
-							{{>pager}}
-						</th>
-					</tr>
-					<tr class="head">
-						<th>host <a id="byhost" class="asc" href="#byhost"><img src="{{img}}/1px.gif" /></a></th>
-						<th>date <a id="bydate" class="desc" href="#bydate"><img src="{{img}}/1px.gif" /></a></th>
-						<th>cookies</th>
-						<th>url</th>
-						<th>details</th>
-					</tr>
-					{{#has_winners}}
-                        {{#winners}}
-                            {{>row}}
-					    {{/winners}}
-					{{/has_winners}}
-					{{^has_winners}}
-					    <tr>
-					        <td colspan="5">no data</td>
-					    </tr>
-					{{/has_winners}}
-				</table>
-            </li>
-        </ul>
-        <div class="clear"></div>
-        <script src="{{loader_js}}"></script>
+        {{>logo}}
+        {{>menu}}
+
+        <div class="script">
+            <span class="markup">
+                <span class="sym">&lt;</span><span class="res">script</span>
+                <span class="attr">src</span><span class="attrv">=&quot;{{xss_js}}</span><span class="sym">&quot;&gt;&lt;/</span><span class="res">script</span><span class="sym">&gt;</span>
+            </span>
+        </div>
     </body>
 </html>

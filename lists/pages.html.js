@@ -29,7 +29,7 @@ function(head, req) {
         var data = {
             root : root,
             pages : pages,
-            index : root + "/index2.html",
+            index : root + "/index.html",
             styles : [{css:root + "/style/main.css"}],
             breadcrumbs : [{name:"<search>", url:root+"/search.html"}]
         };

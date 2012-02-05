@@ -25,7 +25,7 @@ function(head, req) {
         var data = {
             hosts : hosts,
             root :root,
-            index : root + "/index2.html",
+            index : root + "/index.html",
             styles : [{css:root + "/style/main.css"}],
             breadcrumbs : [{name:"<search>", url:root+"/search.html"}]
         };

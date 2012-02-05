@@ -69,7 +69,7 @@ function(doc, req) {
     var utc = new Date(doc.date);
     var utcString = utc.getUTCFullYear() + "-" + two(utc.getUTCMonth()+1) + "-" + two(utc.getDate()) + " (" + two(utc.getUTCHours()) + ":" + two(utc.getUTCMinutes())  + ")";
     var data = {
-        index : root + "/index2.html",
+        index : root + "/index.html",
         doc : doc,
         utc : utcString,
         gmt : gmtString,
