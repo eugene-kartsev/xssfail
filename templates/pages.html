@@ -11,10 +11,13 @@
                     <th>
                         <a href="#">page</a>
                     </th>
+                    <th>date</th>
                 </tr>
+                {{count}}
                 {{#pages}}
                     <tr>
                         <td><a href="{{root}}/page.html/{{pageId}}">{{page}}</a></td>
+                        <td>{{date}}</td>
                     </tr>
                 {{/pages}}
             </table>

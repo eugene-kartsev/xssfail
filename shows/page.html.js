@@ -3,6 +3,7 @@ function(doc, req) {
     var path = require("vendor/couchapp/lib/path").init(req);
     var redirect = require("vendor/couchapp/lib/redirect");
     var config = require("config").init();
+    var tools = require("config").tools();
 
     var root = config.root;
     
@@ -51,11 +52,7 @@ function(doc, req) {
         }
         return arr;
     };
-    
-    var two = function(num) {
-        return num < 10 ? "0" + num : "" + num;
-    };
-    
+
     var pathname = function() {
         var name = doc.location.pathname;
         if(name.indexOf('/') === 0) {
@@ -63,16 +60,12 @@ function(doc, req) {
         }
         return name;
     };
-    
-    var gmtString = doc.dateOffset > 0 ? "-" : "+";
-    gmtString += (-doc.dateOffset/60);
-    var utc = new Date(doc.date);
-    var utcString = utc.getUTCFullYear() + "-" + two(utc.getUTCMonth()+1) + "-" + two(utc.getDate()) + " (" + two(utc.getUTCHours()) + ":" + two(utc.getUTCMinutes())  + ")";
+
     var data = {
         index : root + "/index.html",
         doc : doc,
-        utc : utcString,
-        gmt : gmtString,
+        utc : tools.utcString(doc.date),
+        gmt : tools.gmtString(doc.dateOffset),
         styles : [{css : root + "/style/main.css"}],
         breadcrumbs : [{name:"<search>", url:root+"/search.html"},
                        {name:doc.host, url:(root + "/pages.html/" + doc.host)},

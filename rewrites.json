@@ -13,10 +13,12 @@
         }
     },
     {
-        "from" : "pages.html/:key",
+        "from" : "pages.html/:startkey",
         "to" : "_list/pages.html/pages",
-        "query" : { 
-            "key" : ":key"
+        "query" : {
+            "startkey": [":startkey", 9999999999999],
+            "endkey" : [":startkey", 0],
+            "descending" : "true"
         }
     },
     {

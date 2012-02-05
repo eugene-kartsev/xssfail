@@ -2,6 +2,7 @@ function(head, req) {
     var mustache = require("vendor/couchapp/lib/mustache");
     var list = require("vendor/couchapp/lib/list");
     var config = require("config").init();
+    var tools = require("config").tools();
 
     provides("html", function() {
         var pages = [];
@@ -19,9 +20,11 @@ function(head, req) {
         var row;
         while (row = getRow()) {
             pages.push({
-                host:row.key,
-                page:row.value.page,
-                pageId:row.value.id
+                host   : row.value.host,
+                page   : row.value.page,
+                pageId : row.value.id,
+                date   : tools.utcString(row.value.date),
+                gmt    : tools.gmtString(row.value.dateOffset)
             });
         }
 
@@ -35,9 +38,9 @@ function(head, req) {
         };
 
         if(pages.length) {
-            data.breadcrumbs.push({name:query.key, url:(root + "/pages.html/" + pages[0].host)});
+            data.breadcrumbs.push({name:pages[0].host, url:(root + "/pages.html/" + pages[0].host)});
         }
-
+        
         return mustache.to_html(
                 this.templates.pages,
                 data,
