@@ -1,0 +1,13 @@
+<tr class="node{{depth}}
+           path-{{path}}
+           {{#haschild}} parent {{/haschild}}
+           parent-{{parent}}
+           {{#loaded}} loaded{{/loaded}}">
+    <td class="node{{depth}}" {{#haschild}}xss-title="click to expand this list"{{/haschild}}>
+        <input type="hidden" name="index" value="{{depth}}" />
+        <input type="hidden" name="nodename" value="{{name}}" />
+        <input type="hidden" name="path" value="{{path}}" />
+        {{name}}
+    </td>
+    <td>{{value}}</td>
+</tr>
