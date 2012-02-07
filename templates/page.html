@@ -19,18 +19,7 @@
                         <th></th>
                     </tr>
                     {{#node}}
-                        <tr class="node{{depth}}
-                                   path-{{path}}
-                                   {{#haschild}} parent collapsed{{/haschild}}
-                                   {{#hasparent}} child parent-{{/hasparent}}{{parent}}">
-                            <td class="node{{depth}}">
-                                <input type="hidden" name="index" value="{{depth}}" />
-                                <input type="hidden" name="nodename" value="{{name}}" />
-                                <input type="hidden" name="path" value="{{path}}" />
-                                {{name}}
-                            </td>
-                            <td>{{value}}</td>
-                        </tr>
+                        {{>row}}
                     {{/node}}
                 {{/values}}
             </table>
@@ -39,33 +28,44 @@
         {{>js}}
         <script>
             $(function() {
-                $(".hosts tr.parent").click(function() {
+                $(document).on("click", ".hosts tr.parent", function() {
                     var $this = $(this);
                     var index = parseInt($this.find("input").val());
                     var nodeName = $this.find("input[name='nodename']").val();
                     var path = $this.find("input[name='path']").val();
+                    var loaded = $this.hasClass("loaded");
+                    var loading = $this.hasClass("loading");
 
-                    if(!$this.xssInner) {
-                        $this.xssInner = {
+                    if(loading) return;
+
+                    if(!loaded) {
+                        $this.addClass("loading");
+                        $.get('{{loadnode}}'.replace('{path}', path), function(data) {
+                            var $rows = $(data);
+                            $this.after($rows);
+                            $this.removeClass("loading").addClass("loaded").addClass("expanded");
+                        });
+                    } else {
+                        var xssInner = {
                             closest : $(".hosts tr.node" + (index + 1) + ".parent-" + (path)),
                             all : $("tr[class*=" + path + "-]")
                         };
-                    }
 
-                    var expand = function() {
-                        $this.xssInner.closest.show();
-                        $this.removeClass("collapsed").addClass("expanded");
-                    };
+                        var expand = function() {
+                            xssInner.closest.show();
+                            $this.removeClass("collapsed").addClass("expanded");
+                        };
 
-                    var collapse = function() {
-                        $this.xssInner.all.hide();
-                        $this.removeClass("expanded").addClass("collapsed");
-                    };
+                        var collapse = function() {
+                            xssInner.all.hide();
+                            $this.removeClass("expanded").addClass("collapsed");
+                        };
 
-                    if($this.hasClass("collapsed")) {
-                        expand();
-                    } else if($this.hasClass("expanded")) {
-                        collapse();
+                        if($this.hasClass("collapsed")) {
+                            expand();
+                        } else if($this.hasClass("expanded")) {
+                            collapse();
+                        }
                     }
                 });
             });

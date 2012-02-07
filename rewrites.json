@@ -26,6 +26,10 @@
         "to" : "_show/page.html/:key"
     },
     {
+        "from" : "nodes.html",
+        "to" : "_list/nodes.html/node"
+    },
+    {
         "from" : "form.html",
         "to" : "_show/form.html"
     },

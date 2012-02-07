@@ -70,11 +70,11 @@ div.script > span
     padding: 10px;
     font-size:1.3em;
 }
-a[xss-title]
+[xss-title]
 {
     position:relative;
 }
-a[xss-title]:hover:after
+[xss-title]:hover:after
 {
     content: attr(xss-title);
     position:absolute;
@@ -224,6 +224,16 @@ a[xss-title]:hover:after
 .tree table tr.parent { font-weight:bold; }
 .tree table tr.parent:hover { cursor:pointer; }
 .tree table tr.child { display:none; }
+.tree table tr.loading td { position:relative; }
+.tree table tr.loading td:nth-child(1):before {
+    background:url(../img/ajax-loader.gif) no-repeat scroll 0 0 transparent;
+    position:absolute;
+    width:16px;
+    height:16px;
+    content: "";
+    display:inline-block;
+    margin-left:-22px;
+}
 
 .breadcrumbs {
     margin:0 0 0 2em;;
@@ -249,4 +259,3 @@ a[xss-title]:hover:after
     margin:0 0.2em 0 0;
     color:#D4D4D4;
 }
-

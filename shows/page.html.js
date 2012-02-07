@@ -9,31 +9,39 @@ function(doc, req) {
     
     if(!doc) return redirect.permanent(root + "/notfound.html");
     
-    var nodeAsArray = function(obj, depth) {
+    var nodeAsArray = function(obj, parent, depth) {
         if(obj) {
             depth = depth || 1;
             var result = [];
             for(var name in obj) {
                 var node = obj[name];
                 if(typeof(node) == 'object') {
-                    result.push({depth:depth, name:name, value:"<...>", haschild:1, path:name});
+                    result.push({
+                        depth:depth,
+                        name:name,
+                        value:"<...>",
+                        haschild:1,
+                        path:(parent + "-" + name),
+                        loaded:(depth < 1),
+                        parent:parent
+                    });
                     var inner = nodeAsArray(node, (depth+1));
-                    if(inner) {
+                    if(inner && depth < 1) {
                         for(var i = 0; i < inner.length; i++) {
                             var innerNode = inner[i];
                             result.push({
                                 depth:innerNode.depth,
                                 name:innerNode.name,
                                 value:innerNode.value,
-                                path:(name + "-" + innerNode.path),
-                                parent: (name + (innerNode.parent ? ("-" + innerNode.parent) : "")),
+                                path:innerNode.path,
+                                parent: innerNode.parent,
                                 haschild:innerNode.haschild,
-                                hasparent:1
+                                loaded:(innerNode.depth < 1)
                             });
                         }
                     }
                 } else {
-                    result.push({depth:depth, name:name, value:obj[name], path:name});
+                    result.push({depth:depth, name:name, value:obj[name], path:name, parent:parent});
                 }
             }
             return result;
@@ -48,7 +56,7 @@ function(doc, req) {
             var name = nodeNames[i];
             var node = doc[name];
             if(node)
-                arr.push({name:name, node:nodeAsArray(node)});
+                arr.push({name:name, node:nodeAsArray(node, name, 2)});
         }
         return arr;
     };
@@ -62,15 +70,15 @@ function(doc, req) {
     };
 
     var data = {
-        index : root + "/index.html",
-        doc : doc,
-        utc : tools.utcString(doc.date),
-        gmt : tools.gmtString(doc.dateOffset),
-        styles : [{css : root + "/style/main.css"}],
+        index       : root + "/index.html",
+        loadnode    : root + "/nodes.html?key=[\"" + doc._id + "\",\"{path}\"]",
+        utc         : tools.utcString(doc.date),
+        gmt         : tools.gmtString(doc.dateOffset),
+        styles      : [{css : root + "/style/main.css"}],
         breadcrumbs : [{name:"<search>", url:root+"/search.html"},
                        {name:doc.host, url:(root + "/pages.html/" + doc.host)},
                        {name:pathname(), url:(root + "/page.html/" + doc._id)}],
-        values : values()
+        values      : values()
     };
 
     return mustache.to_html(this.templates.page, data, this.templates.partials);
