@@ -19,7 +19,7 @@ function(doc, req) {
                     result.push({
                         depth:depth,
                         name:name,
-                        value:"<...>",
+                        value:"",
                         haschild:1,
                         path:(parent + "-" + name),
                         loaded:(depth < 1),

@@ -11,7 +11,7 @@ function(doc) {
                     result.push({
                         depth:depth,
                         name:name,
-                        value:"<...>",
+                        value:"",
                         path:path,
                         parent:parent,
                         haschild:1

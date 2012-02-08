@@ -223,9 +223,18 @@ div.script > span
 }
 .tree table tr.parent { font-weight:bold; }
 .tree table tr.parent:hover { cursor:pointer; }
+.tree table tr.parent td:nth-child(1):before {
+    content: '+';
+    position:absolute;
+    margin-left:-1.2em;
+    display:block;
+}
+.tree table tr.parent.expanded td:nth-child(1):before {
+    content: '-';
+}
 .tree table tr.child { display:none; }
-.tree table tr.loading td { position:relative; }
-.tree table tr.loading td:nth-child(1):before {
+.tree table tr.parent.loading td { position:relative; }
+.tree table tr.parent.loading td:nth-child(1):before {
     background:url(../img/ajax-loader.gif) no-repeat scroll 0 0 transparent;
     position:absolute;
     width:16px;

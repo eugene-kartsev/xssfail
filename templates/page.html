@@ -41,8 +41,11 @@
                     if(!loaded) {
                         $this.addClass("loading");
                         $.get('{{loadnode}}'.replace('{path}', path), function(data) {
-                            var $rows = $(data);
-                            $this.after($rows);
+                            data = data || "";
+                            if(data.trim()) {
+                                var $rows = $(data);
+                                $this.after($rows);
+                            }
                             $this.removeClass("loading").addClass("loaded").addClass("expanded");
                         });
                     } else {
